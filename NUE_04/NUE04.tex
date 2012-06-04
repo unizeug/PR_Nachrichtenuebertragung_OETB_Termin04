@@ -83,6 +83,7 @@
 	\subsection{Abtastung durch Signalausblendung (shape-top sampling)}
     \begin{quote}  
         \TODO{Theorie einfügen}
+        
     \end{quote}
     
     \subsection{Abtastung mit Signalverbreiterung (flat-top sampling)}
@@ -93,14 +94,16 @@
     
     \subsection{Vorbereitungsaufgabe}
     \begin{quote}        
-        Leiten sie die Formeln für die Spektren der Abgetasteten Signale her.
+        Zunächst werden die Formeln für das Spektrum eines abgetasteten Signals
+        hergeleitet. Das $\alpha$ steht dabei für das Tastverhältnis.
+        
         \subsubsection{Shape-Top-Sampling}
         \begin{quote}
             \begin{equation*}
                 \begin{split}
                     f_m (t)   &= f(t) \cdot \sqcap_{\alpha T} (t) \ast \delta_T (t) \\
-                    F_m (j\omega) &= \frac{1}{2\pi} F (j\omega) \ast \left [ \alpha T \cdot si \left( \frac{\omega
-                    \alpha T}{2} \right) \cdot \omega_T \cdot \delta_{\omega T} (\omega) \right] \\
+                    F_S (j\omega) &= \frac{1}{2\pi} F (j\omega) \ast \left [
+                    \alpha T \cdot si \left( \frac{\omega \alpha T}{2} \right) \cdot \omega_T \cdot \delta_{\omega T} (\omega) \right] \\
                     &= \alpha \cdot F (j \omega) \ast \left ( si \left( \frac{\omega \alpha T}{2} \right)
                     \sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
                     &= \alpha \cdot F (j \omega) \ast \sum_{k=-\infty}^{\infty} (si(k \pi \alpha) \cdot \delta (\omega -
@@ -116,20 +119,43 @@
 			\begin{equation*}
             	\begin{split}
             		f_m (t) &= [f (t) \cdot \delta_T (t)] \ast \sqcap_{\alpha T} (t)\\
-            		F_m (j\omega) &= \left ( \frac{1}{2 \pi} F (j\omega) \ast \omega_T \cdot \delta_T (\omega) \right) \cdot
-            		\alpha T \cdot si (\frac{\alpha \omega T}{2})\\
+            		F_F (j\omega) &= \left ( \frac{1}{2 \pi} F (j\omega) \ast \omega_T
+            		\cdot \delta_T (\omega) \right) \cdot \alpha T \cdot si (\frac{\alpha \omega T}{2})\\
             		&= \alpha \cdot si \left( \frac{\omega \alpha T}{2} \right) \cdot \sum_{k=-\infty}^{\infty} F(j(\omega -
             		k\omega_T))\\
             	\end{split}
             \end{equation*}
 		\end{quote}
 		
-		\begin{figure}[H]
+		Danach werden die resultierenden Spektren $F_S (j\omega)$ und $F_F (j\omega)$
+		für das Nutzsignal
+		\begin{equation*}
+        f(t) = A \cdot cos(\frac{\omega_T}{5}t)    	
+        \end{equation*}
+		mit $\alpha = 0.5$ und $\omega_T = 20\pi kHz$.
+		
+		
+		 \begin{figure}[H]
     \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Vorbereitungskizze}
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/Vorbereitungskizze}
             \caption{Skizze}
   	    \end{figure}
     
+    	Es ist zu sehen, dass sich die Spektren in Abhängigkeit von $\alpha$
+    	verändern.
+    	\TODO{wie genau muss noch eingefügt werden + ein vllt schöneres Bild -
+    	falls überhaupt schöner möglich ist}
+    	
+    	Außerdem wird die Planung zur Praktikumsdurchführung im voraus gemacht. Für
+    	den Versuch haben wir uns folgendes überlegt\ldots
+    	\TODO{Stichwortartige Beschreibung über die Realisierung des Aufbau,
+    	Blockschaltbilder einfügen, erwähnen wo wichtige Messungen gemacht werden
+    	sollen}
+    	
+    	Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
+    	und Signalverbreiterung für ein Sinussignal als Quellsignal und der
+    	Abtastfrequenz von $400 kHz$.
     \TODO{Vorbereitungsaufgaben beenden}
     \end{quote}%subsection beenden
 
