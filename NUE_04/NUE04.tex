@@ -76,30 +76,48 @@
 \begin{quote}
 	\subsection{Theorie}
     \begin{quote}  
-        Leiten sie die Formeln für die Spektren der Abgetasteten Signale her.
-        \subsubsection{Shape-Top-Sampling}
-		\begin{quote}
-			\begin{equation*}
-            	\begin{split}
-            		f_m (t)   &= f(t) \cdot \sqcap_{\alpha T} (t) \ast \delta_T (t) \\
-            		F_m (j\omega) &= \frac{1}{2\pi} F (j\omega) \ast \left [ \alpha T \cdot si(\frac{\omega \alpha T}{2})
-            		\cdot \omega_T \cdot \delta_{\omega T} (\omega) \right] \\
-            		&= \alpha \cdot F (j \omega) \ast \left ( si \left ( \frac{\omega \alpha T}{2} \right)
-            		\sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
-            		&= \alpha \cdot F (j \omega) \ast \sum_{k=-\infty}^{\infty} (si(k \pi \alpha) \cdot \delta (\omega -
-            		k\omega_T))\\
-            		&= \alpha \cdot \sum_{k=-\infty}^{\infty} \left [ si(k \pi \alpha) \cdot F (j(\omega - k\omega_T))
-            		\right]\\
-            	\end{split}
-            \end{equation*}
-            
-            
-            \TODO{Vorbereitungsaufgaben beenden}
-		\end{quote}  
+        \TODO{Theorie beenden}
+              
     \end{quote}
     
     \subsection{Vorbereitungsaufgabe}
-    \begin{quote}
+    \begin{quote}        
+        Leiten sie die Formeln für die Spektren der Abgetasteten Signale her.
+        \subsubsection{Shape-Top-Sampling}
+        \begin{quote}
+            \begin{equation*}
+                \begin{split}
+                    f_m (t)   &= f(t) \cdot \sqcap_{\alpha T} (t) \ast \delta_T (t) \\
+                    F_m (j\omega) &= \frac{1}{2\pi} F (j\omega) \ast \left [ \alpha T \cdot si \left( \frac{\omega
+                    \alpha T}{2} \right) \cdot \omega_T \cdot \delta_{\omega T} (\omega) \right] \\
+                    &= \alpha \cdot F (j \omega) \ast \left ( si \left( \frac{\omega \alpha T}{2} \right)
+                    \sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
+                    &= \alpha \cdot F (j \omega) \ast \sum_{k=-\infty}^{\infty} (si(k \pi \alpha) \cdot \delta (\omega -
+                    k\omega_T))\\
+                    &= \alpha \cdot \sum_{k=-\infty}^{\infty} \left [ si(k \pi \alpha) \cdot F (j(\omega - k\omega_T))
+                    \right]\\
+                \end{split}
+            \end{equation*}
+        \end{quote}
+        \subsubsection{Flat-Top-Sampling}
+		\begin{quote}
+			\begin{equation*}
+            	\begin{split}
+            		f_m (t) &= [f (t) \cdot \delta_T (t)] \ast \sqcap_{\alpha T} (t)\\
+            		F_m (j\omega) &= \left ( \frac{1}{2 \pi} F (j\omega) \ast \omega_T \cdot \delta_T (\omega) \right) \cdot
+            		\alpha T \cdot si (\frac{\alpha \omega T}{2})\\
+            		&= \alpha \cdot si \left( \frac{\omega \alpha T}{2} \right) \cdot \sum_{k=-\infty}^{\infty} F(j(\omega -
+            		k\omega_T))\\
+            	\end{split}
+            \end{equation*}
+		\end{quote}
+		
+		\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Vorbereitungskizze}
+            \caption{Skizze}
+    \end{figure}
+    
         \TODO{Vorbereitungsaufgaben beenden}
     \end{quote}
     
