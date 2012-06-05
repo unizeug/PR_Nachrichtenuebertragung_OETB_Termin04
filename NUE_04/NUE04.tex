@@ -138,14 +138,27 @@
 		 \begin{figure}[H]
     \centering
         \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/Vorbereitungskizze}
+        clip]{./Bilder/vorbereitungskizze}
             \caption{Skizze}
   	    \end{figure}
-    
-    	Es ist zu sehen, dass sich die Spektren in Abhängigkeit von $\alpha$
-    	verändern.
-    	\TODO{wie genau muss noch eingefügt werden + ein vllt schöneres Bild -
-    	falls überhaupt schöner möglich ist}
+		
+		Es ist zu sehen, dass sich die Amplituden der Spektren mit einem
+		Si-Funktionsfaktor, welcher von dem eingesetzten $\alpha$ abhängt, verringern.
+		Bei dre shape-top Abtastung ist dieser Faktor unabhängig von der Frequenz
+		$\omega$. Daher sind die Amplituden der Peaks, die an den Grenzen eines
+		Frequenzbandes entstehen, immer gleich groß.    	
+		Bei der flat-top Abtastung ist dieser Faktor sogar von der Frequenz abhängig, daher entsteht 
+		eine Amplitudenverringerung von zwei Peaks an den Rändern eines
+		Frequenzbandes.\\
+		Mit $\alpha$ gegen $0$ geht auch die Amplitude des Basisbands (k = $0$) gegen
+		$0$. Somit werden alle folgenden Peakamplituden (deren Amplituden sich bei der
+		shape-top Abtastung mit $\alpha \cdot si(k \pi \alpha)$ und bei der flat-top
+		Abtastung mit $\alpha \cdot si(\frac{\omega \alpha T}{2})$ bilden) ebenfalls
+		verschwindend gering. ist das $\alpha$ aber $1$, beträgt die Amplitude des
+		Basisbands $1$ und die folgenden Peakamplituden lassen sich wie bereits
+		erwähnt berechnen.
+    	
+    	\TODO{Ist das okay so Boris?}
     	
     	Außerdem wird die Planung zur Praktikumsdurchführung im voraus gemacht. Für
     	den Versuch haben wir uns folgendes überlegt\ldots
@@ -153,10 +166,146 @@
     	Blockschaltbilder einfügen, erwähnen wo wichtige Messungen gemacht werden
     	sollen}
     	
+    	.
+    	.
+    	.
+    	
     	Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
     	und Signalverbreiterung für ein Sinussignal als Quellsignal und der
-    	Abtastfrequenz von $400 kHz$.
-    \TODO{Vorbereitungsaufgaben beenden}
+    	Abtastfrequenz von $400 kHz$ ausgeführt. Das verwendete Quellsignal
+    	hatte eine Amplitude von $2V$ und eine Frequenz von $2 kHz$. Das
+    	Abtastrechtecksignal hatte eine variable Frequenz ($10 kHz und 20 kHz$),
+    	eine variable Amplitude (gewählt haben wir $1V, 2V$ und $3V$) und ein
+    	variables Tastverhältnis von $0.2, 0.5$ oder $0.7$.\\
+    	Für den hiesigen Vergleich haben wir nur die Abtastamplituden $1V$ udn $3V$
+    	verwendet.
+    	
+    	Zuerst betrachten wir die Simmulationsergebnisse der Abtastung durch
+    	Signalausblendung:
+    	
+    	 \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-zeit_1V}
+            \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 1V}
+  	    \end{figure}
+  	    
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-freq_1V}
+            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
+            1V}
+  	    \end{figure}
+  	    
+  	    Im Zeitsignal sieht man eine maximale Amplitude von $2V$, welche durch
+  	    die Multiplikation von den $2V$ des Quellsignals und dem $1V$ des
+  	    Abtastsignals entsteht. Die Form der Rechtecke nehmen oben den
+  	    Sinusverlauf des Quellsignals an, was im Zeitsignal den Unterschied zu
+  	    der flat-top Abtastung ausmacht. Zusätzlich kann man deutlich sehen, dass
+  	    die Verdopplung der Abtastfrequenz ungefähr doppelt so viele abgetastete Stellen ergibt und 
+  	    dass ein größeres Tastverhältnis die Breite der Dauer der Abtastung erhöht. 
+  	    Als Umhüllende haben wir das Quellsignal verwendet.\\
+  	    Im simmulierten Spektrum kann man erkennen, dass die Amplituden der
+  	    drei Basisbänder für die drei Tastverhältnisse exakt dem eingesetzten
+  	    Tastverhältnis $\alpha$ mal $1V$ entsprechen. Mit wachsender Frequenz
+  	    nehmen die Peaks deutlich an Amplitude ab. Außerdem kann man sehen, dass
+  	    die auftretenden Peakpaare immer die gleiche Amplitude besitzen. Dieses
+  	    unverzerrte Spektrum war bei einer shape-top Abtastung zu erwarten.
+  	    Die Umhüllende des Spektrums ist eine Si-Funktion.
+  	    
+    	Wenn man nun die Amplitude des Abtastsignals erhöht, erhält man folgende
+    	Plots:
+    	
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-zeit_3V}
+            \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 3V}
+  	    \end{figure}
+  	    
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-freq_3V}
+            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
+            3V}
+  	    \end{figure}
+  	    
+  	    
+  	    Im Zeitsignal beträgt die Amplitude diesmal $6V$, welche durch die
+  	    Multiplikation von $2V \cdot 3V$ entsteht. Alle anderen Auswirkungen der
+  	    Tastfrequenz und des Tastverhältnisses bleiben gleich.\\
+  	    Auch im Spektrum liegt der einzige Unterschied in den Maximalamplituden,
+  	    welche nun um den Faktor $3$ (durch die $3V$ Amplitude des Abtastsignals)
+  	    größer sind.
+  	    
+  	    \vspace{1em}
+  	    
+  	    Nun betrachten wir die Simmulationsergebnisse der Abtastung mit
+  	    Signalverbreiterung:
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/flat-top-zeit_1V}
+            \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 1V}
+  	    \end{figure}
+  	    
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/flat-top-freq_1V}
+            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
+            1V}
+  	    \end{figure}
+  	    
+  	    Die Amplituden, die Breiten und die Häufigkeiten der abgetasteten Stellen
+  	    stimmen bei der flat-top Abtastung mit den Werten des Zeitsignals der
+  	    shape-top Abtastung überein. Der einzige Unterschied, den man wie erwartet sehen
+  	    kann, ist, dass die Rechtecke sich nicht dem Sinusverlauf anpassen
+  	    sondern ab der Abtaststelle die Sinusamplitude annehmen und durch das
+  	    Hold-Glied über die Dauer der Abtastung behalten. Daher sind diese
+  	    Rechtecke oben flach.\\
+  	    Durch die DFT dieser Rechtecke aus dem Zeitsignal entstehen in dem
+  	    Spektrum Peaks mit frequenzabhängiger Amplitude, die deutlich
+  	    besser in die umhüllende Si-Funktion passen, als das Spektrum einer
+  	    shape-top Abtastung. Ansonsten verhält sich das Spektrum im Bezug auf
+  	    Tastfrequenz und -verhältnis nicht anders als bei der Abtastung durch
+  	    Signalausblendung.
+  	    
+  	    Nun wird wieder die Abtastamplitude erhöht:
+  	    
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/flat-top-zeit_3V}
+            \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 3V}
+  	    \end{figure}
+  	    
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/flat-top-freq_3V}
+            \caption{Frequenzsignal mit flat-top-sampling und Abtastamplitude
+            3V}
+  	    \end{figure}
+  	    
+  	    
+  	    Die Amplituden im Zeitsignal betragen wieder $6V$ und die Amplituden der
+  	    Basisbänder nehmen die Werte $3V \cdot \alpha$ an. Ansonsten ist das
+  	    Spektrum erneut deutlich verzerrter und alle anderen erwarteten
+  	    Ergebnisse können auch hier wahrgenommen werden.
+  	    
+  	    
+    \TODO{sind die Vorbereitungsaufgaben gut genug, dass wir sie beenden
+    können?} 
+    
     \end{quote}%subsection beenden
 
 \end{quote}%Theorie beeanden
