@@ -66,13 +66,14 @@
 
 \section{Einleitung}
 \begin{quote}
-	\TODO{Einleitung so okay?}\\
+	
 	In diesem Termin werden zwei nichtideale Abtastverfahren für die
 	Rekonstruktion eines PAM-modulierten Signals untersucht. Diese zwei Verfahren
 	sind die Abtastung durch Signalausblendung (shape-top sampling) und die
 	Abtastung mit Signalverbreiterung (flat-top sampling). Beide Verfahren werden
 	im Zeit- und im Frequenzbereich untersucht, dabei werden ihre Auswirkungen auf
 	die Rekonstruktion der abgetasteten Signale interpretiert.
+
 \end{quote}%beende Einleitung
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
@@ -81,11 +82,11 @@
 \begin{quote}
 	Die in diesem Praktikum behandelte Pulsamplitudenmodulation hat das Ziel aus
 	einem zeitkontinuerliches Signal kleine Zeitabschnitte auszuschneiden, die dann über einen Nachrichtenkanal übertragen
-	werden kann um später wieder demoduliert das Ursprungssignal zu ergeben. Der
+	werden können, um später wieder demoduliert das Ursprungssignal zu ergeben. Der
 	Sinn und Zweck dieser Modulation ist, wie auch bei der Frequenzmodulation und der Amplitudenmodulation, 
 	mehrere Signale gleichzeitig über einen Kanal zu übertragen. Die Pulsamplitudenmodulation ist in
-	diesem Fall die nötige Vorstufe für das Time-Division-Multiplexen, bei dem mehrere Signale zu verschiedenen Timeslots
-	über einen Kanal versendet werden.\\
+	diesem Fall die nötige Vorstufe für das Time-Division-Multiplexing, bei dem
+	mehrere Signale zu verschiedenen Timeslots über einen Kanal versendet werden.\\
 	Die beiden verwendeten Verfahren der Pulsamplitudenmodulation haben jeweils Vor und Nachteile, die im folgenden näher
 	erläutert werden.
 \end{quote} %section
@@ -100,9 +101,9 @@
     \begin{quote} 
         Bei dem Shape-Top sampling wird das Originalsignal mit einer Rechteckfolge multipliziert. Die Rechtecke dieser
         Folge haben die Breite $\alpha \cdot T$ mit einem $\alpha \leq 1$ und sind somit schmaler als die Abtastzeit
-        $T$. Daraus resultiert, ein nichtideal abgetastetes Signal. Die Dächer der ausschneidenden Rechtecke
-        beinhaltet den originalen Verlauf des Nutzsignals. Im folgenden Bild ist das Prinzip des
-        Shape-Top sampling veranschalicht.\\
+        $T$. Daraus resultiert ein nichtideal abgetastetes Signal. Die Dächer der ausschneidenden Rechtecke
+        beinhalten den originalen Verlauf des Nutzsignals. Im folgenden Bild ist
+        das Prinzip des Shape-Top sampling veranschaulicht.\\
 
         \begin{figure}[H]
         \centering
@@ -111,19 +112,20 @@
                 \cite{PrinzipSignalausblendung}
         \end{figure}
     
-        Pratisch lässt sich diese Art der Modulation durch einen Schalter realisieren, der jeweils nur
-        kurzzeitig geschlossen wird.\vspace{1em}
+        Praktisch lässt sich diese Art der Modulation durch einen Schalter
+        realisieren, der jeweils nur kurzzeitig geschlossen wird.\vspace{1em}
         
         Das oben erwähnte $\alpha$ bezeichnet in diesem Fall das
-        Tastverhältniss. Es beschreibt den Prozentsatz wie breit ein Rechteck in Verhälltniss zur angegebenen halben 
+        Tastverhältnis. Es beschreibt den Prozentsatz wie breit ein Rechteck in Verhältnis zur angegebenen halben 
         Periodendauer ist. Mit Hilfe dieses Wertes $\alpha$ lassen sich die Zeitfenster einstellen, 
         die ein Signal zur Verfügung haben soll. Sollen beispielsweise zwei Signale auf einem Kanal mit Hilfe 
-        von Time-Devision Multiplexing übertragen werden wird das $\alpha =
+        von Time-Devision Multiplexing übertragen werden, wird das $\alpha =
         \frac{1}{2}$ gewählt und jedes der Signale hat die Hälfte der Zeit auf dem Kanal. Sollen wiederum auf dem selben 
         Kanal $100$ verschiedene Signale übertragen werden wird $\alpha = \frac{1}{100}$ und jedes Signal hat
         $\frac{1}{100}$ der Zeit auf dem Kanal.\vspace{1em}
         
-        Interessant ist, welche auswirkung diese Art der modulation auf das Frequenzspekrum des Originalsignals hat.
+        Interessant ist, welche Auswirkung diese Art der Modulation auf das
+        Frequenzspektrum des Originalsignals hat.
         Dazu betrachten wir das Zeitsignal und transformieren es in den Frequenzbereich.
         
             \begin{equation*}
@@ -157,31 +159,34 @@
         \end{equation*}        
         
         Diese Fourier-Transformation verdeutlicht, dass das gesamte Amplitudensprktrum im Frequenzbereich um den Faktor
-        $\alpha$ dedämpft wird. Außerdem werden alle Bänder mit $k > 0$ zusätzlich um den Faktor $si(k \pi \alpha)$
-        gedämpft. Falls das Produkt $k \cdot \alpha$ eine ganze Zahl und somit das Produkt innerhalb der $si()$ Funktion
-        ein ganzzahliges vielfaches von $\pi$ ergibt wird dieses Frequenzband vollständig gedämpft. Die Amplituden eines
-        einzelnen Frequenzbandes werden jedoch nicht unterschiedlich zueinander gedämpft.\\
+        $\alpha$ gedämpft wird. Außerdem werden alle Bänder mit $k > 0$
+        zusätzlich um den Faktor $si(k \pi \alpha)$ gedämpft. Falls das Produkt $k \cdot \alpha$ eine ganze Zahl und somit 
+        das Produkt innerhalb der $si()$ Funktion
+        ein ganzzahliges Vielfaches von $\pi$ ergibt, wird dieses Frequenzband
+        vollständig gedämpft. Die Amplituden eines einzelnen Frequenzbandes werden jedoch nicht unterschiedlich zueinander gedämpft.\\
         
         Die eben besprochenen Auswirkungen der Modulation auf das Amplitudenspekrum verdeutlicht auch das folgende Bild.
         
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/AmplitudenspektrumShap_Top}
-                \caption{Amplitudenspektrum Shap_Top Sampling}
+                \caption{Amplitudenspektrum Shap-Top Sampling}
                 \cite{AmplitudenspektrumShap_Top}
         \end{figure}
         
         Dieses Verhalten im Frequenzbereich ist ein großer Vorteil dieses Verfahrens der Pulsamplitudenmodulation. Die
-        Amplitudenspektren werden zwar gedämpft jedoch beiben sie unverzerrt. Diese Dämpfung lässt sich beim Empfänger
-        jedoch wieder durch eine Verstärkung kompensieren. Problematisch wird es erst wenn das $\alpha$ so klein wird,
+        Amplitudenspektren werden zwar gedämpft, jedoch beiben sie unverzerrt.
+        Diese Dämpfung lässt sich beim Empfänger jedoch wieder durch eine
+        Verstärkung kompensieren. Problematisch wird es erst, wenn das $\alpha$ so klein wird, 
         dass die Amplituden des modulierten Signals auf die Größe der Rauschamplituden gedämpft werden.\vspace{1em}
         
-        Da das modulierte Signal weiterhin Wertekontinuerlich ist lässt sich dieses Signal nur Analog übertragen. Daher
-        lassen sich auch keine Methoden der der digitalen Verarbeitung anwenden, wie beispielsweise die
-        der Fehlererkennung. Die ist ein entscheidender Nachteil dieses Verfahrens.\vspace{1em}
+        Da das modulierte Signal weiterhin wertekontinuerlich ist, lässt sich
+        dieses Signal nur analog übertragen. Daher lassen sich auch keine Methoden der digitalen Verarbeitung anwenden, 
+        wie beispielsweise die der Fehlererkennung. Dies ist ein entscheidender
+        Nachteil dieses Verfahrens.\vspace{1em}
         
-        Die demodulation des Signals funktioniert auf die selbe Weise wie bei der Amplitudenmodulation. Das
-        Modulierte Signal wird Tiefpassgefiltert. 
+        Die Demodulation des Signals funktioniert auf die selbe Weise wie bei der Amplitudenmodulation. Das
+        modulierte Signal wird tiefpassgefiltert. 
         
     \end{quote}%subsection
     
@@ -189,7 +194,7 @@
     \begin{quote}
         Auch beim Flat-Top Sampling wird das Nutzsignal durch einen Schalter in bestimmte Zeitslots eingeteilt. Anders
         als beim Shape-Top sampling, bei dem als Dach des Rechtecks das Nutzsignal übertragen wurde, wird beim Flat Top
-        sampling der erste Wert des Nutzsignals zu Beginn eines Zeitslots über den gesamten Zeitslot übertragen. 
+        Sampling der erste Wert des Nutzsignals zu Beginn eines Zeitslots über den gesamten Zeitslot übertragen. 
         Dazu wird zeitgleich zu dem Schalter auch noch ein Sample and Hold Glied
         geschaltet. Dieses Prinzip wird im folgenden Bild veranschaulicht.
         
@@ -224,27 +229,26 @@
         	\end{split}
         \end{equation*}
         
-        Dieses Frequenzspektrum wird nicht nur um den Faktor $\alpha$ gedämpft sondern zusätzlich auch noch um den
-        Frequenzabhängigen Faktor $si \left( \frac{\omega \alpha \pi}{\omega_T}\right) $. Diese Dämpfung erscheint auch
-        schon in dem Basisfrequenzband und hat eine Verzerrung aller Frequenzbänder zur konsequenz. Das
-        Amplitudenspektrum sieht daher folgendermaßen aus:
+        Dieses Frequenzspektrum wird nicht nur um den Faktor $\alpha$ gedämpft,
+        sondern zusätzlich auch noch um den Frequenzabhängigen Faktor $si \left( \frac{\omega \alpha \pi}{\omega_T}\right) $. 
+        Diese Dämpfung erscheint auch schon in dem Basisfrequenzband und hat
+        eine Verzerrung aller Frequenzbänder zur Konsequenz. Das Amplitudenspektrum sieht daher folgendermaßen aus:
         
         \begin{figure}[H]
         \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{AmplitudenspektrumFlat_Top}
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+            clip]{./Bilder/AmplitudenspektrumFlat_Top}
                 \caption{Amplitudenspektrum Flat-Top}
-                \cite{Amplitudenspektrum_Flat_Top}
+                \cite{AmplitudenspektrumFlat_Top}
         \end{figure}
         
         Dieses verzerrte Spektrum lässt sich im Gegensatz zu dem Shape-Top gesampelten Signal nicht durch einen Teifpass
         wieder $100$ prozentig wiederherstellen. Das demodulierte Signal wird weiterhin verzerrt bleiben. Dies ist ein
-        Großer Nachteil des Flat-Top sampling.\\
+        großer Nachteil des Flat-Top Sampling.\\
         Der Vorteil dieses Verfahrens ist es, dass das modulierte Signal sich als digitales Signal übertragen lässt und
         sich somit alle weiteren Verfahren der digitalen Übertragungstechnik anwenden lassen. 
     
-
-    	\TODO{Özgü: nocheinmal doie Theorie durchlesen und ggf. umformulieren und ergänzen}
-    \end{quote}%subsection
+	\end{quote}%subsection
 \end{quote}%section
 
 %--------------------------------------------------------------------
@@ -254,7 +258,12 @@
     \subsection{Herleitung der Spektren}
     \begin{quote}
         Zunächst werden die Formeln für das Spektrum eines abgetasteten Signals
-        hergeleitet. Das $\alpha$ steht dabei für das Tastverhältnis.
+        hergeleitet. Das $\alpha$ steht dabei für das Tastverhältnis.\\
+        Diese Herleitungen sind bereits ausführlich in der Theorie bearbeitet
+        und können da eingesehen werden.
+        
+        \TODO{hier könnten wir die ganze Herleitung auch wegkicken, es steht
+        eins zu eins auch schon in der Theorie}
         
         \subsubsection{Shape-Top-Sampling}
         \begin{quote}
@@ -308,6 +317,7 @@
         \end{equation*}
 		    mit $\alpha = 0.5$ und $\omega_T = 20\pi kHz$.
         
+    \TODO{der Satz ist nicht vollständig}
         
          \begin{figure}[H]
             \centering
@@ -332,7 +342,8 @@
         Basisbands $1$ und die folgenden Peakamplituden lassen sich wie bereits
         erwähnt berechnen.
         
-        \TODO{Ist das okay so Boris?}
+        \TODO{Ist das okay so Boris? Wollen wir hier noch erwähnen, dass bei
+        bestimmten alphas die Spektren wegfallen?}
         
     \end{quote}  % Ende Subsection    
     
@@ -380,6 +391,9 @@
     \end{quote}  % Ende Subsection	
     
     \subsection{Matlab-Simulation}
+    
+    \TODO{wollen wir als Zeichen unseres Fleißes die zusätzliche Arbeit drin
+    lassen?}
     \begin{quote}
         Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
         und Signalverbreiterung für ein Sinussignal als Quellsignal und der
