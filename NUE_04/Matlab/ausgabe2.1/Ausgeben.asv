@@ -1,0 +1,9 @@
+%Ausgeben
+clear;
+
+a = load('shape-top-tp-recht-a02_10kHz+rekon.mat');
+
+%plot(a.A);
+hold on
+plot(a.B, 'r');
+hold off
