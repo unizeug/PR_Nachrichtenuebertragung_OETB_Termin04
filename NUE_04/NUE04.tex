@@ -79,10 +79,11 @@
 
 \section{Motivation}
 \begin{quote}
-	Die in diesem Praktikum behandelte Pulsamplitudenmodulation hat das Ziel aus einem Zeitkontinuerliches Signal kleine
-	Zeitabschnitte auszuschneiden, die dann über einen Nachrichtekanal übertragen werden kann um später wieder demoduliert
-	das ursprungssignal zu ergeben. Der Sinn und Zweck dieser Modulation ist, wie auch bei der Frequenzmodulation und der
-	Amplitudenmodulation, mehrere Signale gleichzeitig über einen Kanal zu übertragen. Die Pulsamplitudenmodulation ist in
+	Die in diesem Praktikum behandelte Pulsamplitudenmodulation hat das Ziel aus
+	einem zeitkontinuerliches Signal kleine Zeitabschnitte auszuschneiden, die dann über einen Nachrichtenkanal übertragen
+	werden kann um später wieder demoduliert das Ursprungssignal zu ergeben. Der
+	Sinn und Zweck dieser Modulation ist, wie auch bei der Frequenzmodulation und der Amplitudenmodulation, 
+	mehrere Signale gleichzeitig über einen Kanal zu übertragen. Die Pulsamplitudenmodulation ist in
 	diesem Fall die nötige Vorstufe für das Time-Division-Multiplexen, bei dem mehrere Signale zu verschiedenen Timeslots
 	über einen Kanal versendet werden.\\
 	Die beiden verwendeten Verfahren der Pulsamplitudenmodulation haben jeweils Vor und Nachteile, die im folgenden näher
@@ -113,11 +114,12 @@
         Pratisch lässt sich diese Art der Modulation durch einen Schalter realisieren, der jeweils nur
         kurzzeitig geschlossen wird.\vspace{1em}
         
-        Das oben erwähnte $\alpha$ bezeichnet in diesem Fall das Tastverhältniss. Es beschreibt den prozentsatz wie
-        breit ein Rechteck in verhälltniss zur angegebenen halben Periodendauer ist. Mit Hilfe dieses Wertes $\alpha$
-        lassen sich die Zeitfenster einstellen, die ein Signal zur Verfügung haben soll. Sollen beispielsweise zwei
-        Signale auf einem Kanal mit Hilfe von Time-Devision Multiplexing übertragen werden wird das $\alpha =
-        \frac{1}{2}$ gewählt und jedes der Signale hat die hälfte der Zeit auf dem Kanal. Sollen wiederum auf dem selben
+        Das oben erwähnte $\alpha$ bezeichnet in diesem Fall das
+        Tastverhältniss. Es beschreibt den Prozentsatz wie breit ein Rechteck in Verhälltniss zur angegebenen halben 
+        Periodendauer ist. Mit Hilfe dieses Wertes $\alpha$ lassen sich die Zeitfenster einstellen, 
+        die ein Signal zur Verfügung haben soll. Sollen beispielsweise zwei Signale auf einem Kanal mit Hilfe 
+        von Time-Devision Multiplexing übertragen werden wird das $\alpha =
+        \frac{1}{2}$ gewählt und jedes der Signale hat die Hälfte der Zeit auf dem Kanal. Sollen wiederum auf dem selben 
         Kanal $100$ verschiedene Signale übertragen werden wird $\alpha = \frac{1}{100}$ und jedes Signal hat
         $\frac{1}{100}$ der Zeit auf dem Kanal.\vspace{1em}
         
@@ -187,9 +189,9 @@
     \begin{quote}
         Auch beim Flat-Top Sampling wird das Nutzsignal durch einen Schalter in bestimmte Zeitslots eingeteilt. Anders
         als beim Shape-Top sampling, bei dem als Dach des Rechtecks das Nutzsignal übertragen wurde, wird beim Flat Top
-        sampling der erste Wert des Nutzsignals zu beginn eines Zeitslots über den gesamten Zeitslot übertragen. Dazu wird zeitgleich zu
-        dem Schalter auch noch ein Sample and Hold Glied geschaltet. Dieses Prinzip wird im folgenden Bild
-        veranschaulicht.
+        sampling der erste Wert des Nutzsignals zu Beginn eines Zeitslots über den gesamten Zeitslot übertragen. 
+        Dazu wird zeitgleich zu dem Schalter auch noch ein Sample and Hold Glied
+        geschaltet. Dieses Prinzip wird im folgenden Bild veranschaulicht.
         
         \begin{figure}[H]
         \centering
@@ -215,6 +217,7 @@
             \end{equation*}
 
         Auch hier erwähnen wir den Sonderfall für das Basisband
+        
         \begin{equation*}
         	\begin{split}
         		U_M (j\omega) = \alpha \cdot si \left( \frac{\omega \alpha \pi}{\omega_T}\right) \cdot U (j \omega)
@@ -335,18 +338,50 @@
     
     \subsection{Planung und Durchführung}
     \begin{quote}
-                Außerdem wird die Planung zur Praktikumsdurchführung im voraus gemacht. Für
-        den Versuch haben wir uns folgendes überlegt\ldots\\
+        Außerdem wird die Planung zur Praktikumsdurchführung im voraus gemacht. Für
+        den Versuch haben wir uns folgendes überlegt.\\
+        \TODO{hier die Skizze}
         
-        \TODO{Stichwortartige Beschreibung über die Realisierung des Aufbau,
-        Blockschaltbilder einfügen, erwähnen wo wichtige Messungen gemacht werden
-        sollen}
+        Zuerst müssen die Quellsignale moduliert werden. Das Sinussignal
+        kommt direkt aus der Quelle auf dem Steckbrett mit $2 kHz$ Fequenz und
+        $2V$ Amplitude. An diesem Signal wird nichts verändert. Beim
+        Rechtecksignal beträgt die Amplitude der Quelle auf dem Steckbrett $5V$, daher 
+        muss das Signal zunächst in einen Verstärker/Dämpfer geführt werden.
+        Dazu verwenden wir den Addierer mit dem integrierten Dämpfer und
+        reduzieren das Signal von $5V$ zuerst mit dem Faktor $\frac{4}{5}$ auf $4V$ und addieren dann $-2V$ drauf, um
+        ein bipolares Rechtecksignal mit einer Peak-to-Peak Amplitude von $-2V$
+        bis $+2V$ zu erhalten.\\
+        Nun müssen diese Signale abgetastet werden:
+        
+        Für das shape-top sampling wird das Sinus-Quellsignal in den
+        Schalter geführt, welcher über das Rechteck-Tastsignal mit $5V$ Amplitude und $10 kHz$ bzw. $20 kHz$
+        Abtastfrequenz zustandsgesteuert ist. Durch den Schalter wird der Sinus
+        entsprechend abgetastet und kann mithilfe des PicoScope grafisch
+        dargestellt werden.\\ 
+        Das modulierte Rechteckquellsignal wird ebenfalls in den
+        zustandgesteuerten Schlater geführt, wo es dann durch shape-top sampling
+        abgetastet wird. 
+        
+        \vspace{0.5em}
+        
+        Für das flat-top sampling wird zusätzlich ein Sample and Hold Glied
+        verwendet. Dieser befindet sich auf dem Steckbrett direkt über dem
+        verwendeten Schalter und ist ebenfalls über das Rechtecktastsignal
+        gesteuert. Beide Quellsignale werden hierbei zunächst in das Sample and
+        Hold Glied geführt und aus dessen Ausgang in den Schalter
+        weitergeleitet. So wird erst die zum Abtastzeitpunkt vorhandene
+        Amplitude ermittelt und danach die Abtastung vollzogen. Das enstandene
+        Signal kann anhand PicoScope grafisch mit dem Quellsignal ins Vergleich gesetzt
+        werden.
+        
+        
+        \TODO{Blockschaltbilder einfügen (mit iPad)}
                
     \end{quote}  % Ende Subsection	
     
     \subsection{Matlab-Simulation}
     \begin{quote}
-                Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
+        Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
         und Signalverbreiterung für ein Sinussignal als Quellsignal und der
         Abtastfrequenz von $400 kHz$ ausgeführt. Das verwendete Quellsignal
         hatte eine Amplitude von $2V$ und eine Frequenz von $2 kHz$. Das
@@ -481,7 +516,7 @@
     \end{quote}  % Ende Subsection	
 
 
-\end{quote}%Theorie beeanden
+\end{quote}%Theorie beenden
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
@@ -489,7 +524,34 @@
     
     \section{Labordurchführung}
     \begin{quote}
-         \TODO{Durchführung schreiben}
+         
+         Nachdem wir die beiden realisierbaren, nichtidealen Abtastverfahren
+         theoretisch realisiert haben, wurde nun die praktische Untersuchung
+         dieser Verfahren Pulsamplitudenmodulation zur Diskretisierung von
+         zeitkontunierlichen Signalen durchgeführt. Dazu wurde, je nachdem
+         welches Abtastverfahren untersucht werden sollte, eine
+         Pulsamplitudenmodulationstrecke mit verschiedenen variablen Parametern
+         entworfen und anhand dieser Strecke die Zeitsignale und die daraus
+         entstehenden Spektren betrachtet.\\
+         
+         Als Abtastsignal verwendeten wir ein unipolares Rechtecksignal mit $5V$
+         Amplitude und einer Abtastfreuquenz von entweder $10 kHz$ oder $20
+         kHz$. Das Tastverhältnis wurde bei den Messungen zwischen $0.2$, $0.5$
+         und $0.7$ abgewechselt. Dieses Abtastsignal erzeugten wir mithilfe des
+         Signalgenerator und kontrollierten es vor jeder Messung mit dem
+         Oszilloskop.\\
+         
+         Als Quellsignale wurden ein Sinus- und ein Rechtecksignal, sowie ein
+         Rechtecksignal mit vorheriger RC-Tiefpassfilterung eingesetzt. Für den
+         Sinus verwendeten wir die Quelle auf dem Steckbrett, welcher uns, wie
+         bereits in der Vorbereitungsaufgabe zum Versuchsaufbau erklärt, eine
+         Amplitude von $2V$ und eine Frequenz von $2 kHz$ zur Verfügung stellte. 
+         Die Einrichtung des Rechteckquellsignals war etwas aufwendiger. Da das
+         Steckbrett tatsächlich nur einen unipolaren Rechteck mit der Amplitude
+         von $5V$ liefert, musste es erst auf das erwünschte bipolare Rechteck
+         mit der Peak-to-Peak Spannung von $4V$ umgestellt werden.
+         
+         
    	\end{quote}%beende Labordurchführung
 
 %--------------------------------------------------------------------
