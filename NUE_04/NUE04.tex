@@ -262,50 +262,6 @@
         Diese Herleitungen sind bereits ausführlich in der Theorie bearbeitet
         und können da eingesehen werden.
         
-        \TODO{hier könnten wir die ganze Herleitung auch wegkicken, es steht
-        eins zu eins auch schon in der Theorie}
-        
-        \subsubsection{Shape-Top-Sampling}
-        \begin{quote}
-            \begin{equation*}
-                \begin{split}
-                    f_m (t)   &= f(t) \cdot \sqcap_{\alpha T} (t) \ast \delta_T (t) \\
-                    F_S (j\omega) &= \frac{1}{2\pi} F (j\omega) \ast \left [
-                    \alpha T \cdot si \left( \frac{\omega \cdot \alpha T}{2} \right) \cdot \omega_T \cdot \delta_{\omega
-                    T} (\omega) \right] \\
-                    &= \frac{1}{2\pi} F (j\omega) \ast \left [
-                    \alpha \frac{2 \pi}{\omega_T} \cdot si \left( \frac{\omega \cdot \alpha T}{2} \right) \cdot \omega_T
-                    \cdot \delta_{\omega T} (\omega) \right] \\
-                    &= \alpha \cdot F (j \omega) \ast \left ( si \left( \frac{\omega \cdot \alpha T}{2} \right)
-                    \sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
-                    &= \alpha \cdot F (j \omega) \ast \left ( si \left( \frac{\omega \cdot \alpha \frac{2
-                    \pi}{\omega_T}}{2} \right) \sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
-                    &= \alpha \cdot F (j \omega) \ast \left ( si \left( \frac{\omega \cdot \alpha \pi}{\omega_T}
-                    \right) \sum_{k=-\infty}^{\infty} \delta (\omega - k\omega_T) \right)\\
-                    &= \alpha \cdot F (j \omega) \ast \sum_{k=-\infty}^{\infty} (si(k \pi \alpha) \cdot \delta (\omega -
-                    k\omega_T))\\
-                    &= \alpha \cdot \sum_{k=-\infty}^{\infty} \left [ si(k \pi \alpha) \cdot F (j(\omega - k\omega_T))
-                    \right]\\
-                \end{split}
-            \end{equation*}
-        \end{quote} %ende Subsubsection
-        
-        \subsubsection{Flat-Top-Sampling}
-        \begin{quote}
-            \begin{equation*}
-                \begin{split}
-                    f_m (t) &= [f (t) \cdot \delta_T (t)] \ast \sqcap_{\alpha T} (t)\\
-                    F_F (j\omega) &= \left ( \frac{1}{2 \pi} F (j\omega) \ast \omega_T
-                    \cdot \delta_T (\omega) \right) \cdot \alpha T \cdot si (\frac{\alpha \omega T}{2})\\
-                    &= \alpha \cdot si \left( \frac{\omega \alpha T}{2} \right) \cdot \sum_{k=-\infty}^{\infty} F(j(\omega -
-                    k\omega_T))\\
-                    &= \alpha \cdot si \left( \frac{\omega \alpha \frac{2 \pi}{\omega_T}}{2} \right) \cdot
-                    \sum_{k=-\infty}^{\infty} F(j(\omega - k\omega_T))\\
-                    &= \alpha \cdot si \left( \frac{\omega \alpha \pi}{\omega_T} \right) \cdot
-                    \sum_{k=-\infty}^{\infty} F(j(\omega - k\omega_T))\\
-                \end{split}
-            \end{equation*}
-        \end{quote} %ende Subsubsection
     \end{quote}  % Ende Subsection        
     \subsection{Skizzieren}
     \begin{quote}
@@ -315,9 +271,7 @@
         \begin{equation*}
         f(t) = A \cdot cos(\frac{\omega_T}{5}t)     
         \end{equation*}
-		    mit $\alpha = 0.5$ und $\omega_T = 20\pi kHz$.
-        
-    \TODO{der Satz ist nicht vollständig}
+		mit $\alpha = 0.5$ und $\omega_T = 20\pi kHz$ skizziert.
         
          \begin{figure}[H]
             \centering
@@ -391,10 +345,8 @@
     \end{quote}  % Ende Subsection	
     
     \subsection{Matlab-Simulation}
-    
-    \TODO{wollen wir als Zeichen unseres Fleißes die zusätzliche Arbeit drin
-    lassen?}
     \begin{quote}
+    
         Zuletzt wird eine MATLAB-Simulation der Abtastung mittels Signalausblendung
         und Signalverbreiterung für ein Sinussignal als Quellsignal und der
         Abtastfrequenz von $400 kHz$ ausgeführt. Das verwendete Quellsignal
@@ -609,8 +561,8 @@
     \section{Auswertung}
     \begin{quote}    
     
-    	Zuerst werden die Zeitbereiche eines shape-top
-    	abgetasteten Sinusquellsignals betrachtet.
+    	Zuerst werden die Zeitbereiche eines shape-top abgetasteten
+    	Sinusquellsignals betrachtet.
         
     	\begin{figure}[H]
     \centering
@@ -622,25 +574,34 @@
   	    
   	    Man kann sehen, dass mit wachsendem Tastverhältnis $\alpha$ die Breite
   	    der Abtastdauer zunimmt. Mit der doppelten Abtastfrequenz ist es
-  	    sichtbar, dass mit der doppelten Häufigkeit abgetastet wird.\\
+  	    sichtbar, dass mit der doppelten Häufigkeit abgetastet wird. Die
+  	    rekonstruierten Signale konnten wir anhand eines Tiefpasses erstellen.
+  	    Das abgetatstete Signal durchlief den Tiefpass auf dem Seckbrett,
+  	    welcher ein einstellbares Gain besitzt. Je nachdem wie das Gain und die
+  	    ebenfalls einstellbare Grenzfrequenzes auf dem Tiefpass eingestellt
+  	    war, variierte die Amplitude und die Phase des rekonstruierten Signals.
+  	    Da dies nicht der Schwerpunkt des Praktikums war, gaben wir uns damit
+  	    zufrieden, wenn die Rekonstruktion einen erkennbaren Sinus wiedergab.\\
+  	    
   	    Wenn man sich den Frequenzbereich ansieht, fällt folgendes auf:
   	    
   	    
     	\begin{figure}[H]
     \centering
         \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-zeit_3V}
+        clip]{./Bilder/shape-top-sinus_freq}
             \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
             eines Sinusquellsignals}
   	    \end{figure}
   	    
-    \TODO{Frequenzbereich der Sinus shape top abtastung einfügen}
+    \TODO{Frequenzbereich der Sinus shape top abtastung einfügen und ein
+    bisschen dazu erklären, was man sieht}
     
     	Bei dem Rechteckquellsignal ist ein ähnliches Ergebnis zu sehen, wobei die
-    	Oberseite des Abtastrechtecks des shape-tops bei einem Rechteck nicht
-    	anders aussieht als bei einem flat-top-sampling. Hier ist das Zeitsignal:
-    	
-    	
+    	Oberseite des Abtastrechtecks des shape-top-samplings bei einem Rechteck
+    	nicht anders aussieht, als bei einem flat-top-sampling. Hier ist das
+    	Zeitsignal:
+    	   	
     	\begin{figure}[H]
     \centering
         \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
@@ -650,8 +611,21 @@
   	    \end{figure}
   	    
   	    Die Eigenschaften bei erhöhtem Tastverhältnis und der doppelten
-  	    Abtastfrequenz bleiben wie erwartet.\\ 
-  	    Dazu wird das Frequenzsignal erstellt:
+  	    Abtastfrequenz bleiben wie erwartet. Es ist deutlich erkennbar, dass
+  	    die rekonstruierten Signale bei der Abtastfrequenz von $10 kHZ$ nicht
+  	    einen sehr klar sichtbaren Rechteck wiedergeben. Dies ändert sich bei
+  	    einer Abtastfrequenz von $20 kHz$. Dies liegt daran, dass die $10 kHZ$
+  	    nicht der doppelten Bandbreite des Signals entspricht, welche ungefähr
+  	    $8 kHz$ betrug. Dadurch können sich die periodischen Erweiterungen
+  	    im Frequenzbereich überlagern und es entsteht Aliasing, welcher im
+  	    Nachhinein nicht mehr korrigierbar ist. Tasten wir aber mit $20 kHZ$
+  	    ab, ist die Abtastfrequenz mer als doppelt so groß wie die Bangbreite
+  	    des Signals und Aliasing kann ausgeschlossen werden. Dadurch werden die
+  	    Rekonstruktionen, später auch bei dem rifpassgefiltertem
+  	    Rechtecksignal, deutlcih erkennbarer und unverzerrter als die
+  	    Rekonstruktionen der mit $10 kHZ$ abgetasteten Signalen.\\
+  	    
+  	    Nun wird auch ein Frequenzgang dieses Rechtecksignals erstellt:
     	
     	
     	\begin{figure}[H]
@@ -676,11 +650,13 @@
             eines tiefpassgefilterten Rechteckquellsignals}
   	    \end{figure}
     	 
-    	Das Rechtecksignal verläuft rundlich, man kann ein urspüngliches Rechteck
-    	kaum wieder erkennen. Dennoch passt sich die obere Seite des
+    	Das tiefpassgefilterte Rechtecksignal verläuft rundlich, man kann ein
+    	urspüngliches Rechteck kaum wieder erkennen. Dennoch passt sich die obere Seite des
     	Abtastrechtecks der Form des Quellsignals an. Wieder bleiben die erwarteten
     	Eigenschaften bei verändertem $\alpha$ und veränderter Abtastfrequenz
-    	erhalten.
+    	erhalten und die Rekonstruktionen sind bei einer Abtastung mit $20 kHZ$ aus
+    	dem bereits erwähntem Grund viel deutlicher als gefiltertes Rechteck zu
+    	erkennen.\\ 
     	
     	Im Zeitbereich sieht die Abtastung folgendermaßen aus:
     	
@@ -692,10 +668,8 @@
             eines tiefpassgefilterten Rechteckquellsignals}
   	    \end{figure}
     	
-    \TODO{Freuenzsignal des tp Rechtecks einfügen}
-    
-    	Man sieht, dass
-    	
+    \TODO{Freuenzsignal des tp Rechtecks einfügen und bisschen was erklären}
+       	
     \end{quote}%beende Auswertung
     
     \section{Zusammenfassung}
