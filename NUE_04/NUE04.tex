@@ -608,7 +608,94 @@
     
     \section{Auswertung}
     \begin{quote}    
-        \TODO{Auswertung schreiben}
+    
+    	Zuerst werden die Zeitbereiche eines shape-top
+    	abgetasteten Sinusquellsignals betrachtet.
+        
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-sinus}
+            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+            eines Sinusquellsignals}
+  	    \end{figure}
+  	    
+  	    Man kann sehen, dass mit wachsendem Tastverhältnis $\alpha$ die Breite
+  	    der Abtastdauer zunimmt. Mit der doppelten Abtastfrequenz ist es
+  	    sichtbar, dass mit der doppelten Häufigkeit abgetastet wird.\\
+  	    Wenn man sich den Frequenzbereich ansieht, fällt folgendes auf:
+  	    
+  	    
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-zeit_3V}
+            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+            eines Sinusquellsignals}
+  	    \end{figure}
+  	    
+    \TODO{Frequenzbereich der Sinus shape top abtastung einfügen}
+    
+    	Bei dem Rechteckquellsignal ist ein ähnliches Ergebnis zu sehen, wobei die
+    	Oberseite des Abtastrechtecks des shape-tops bei einem Rechteck nicht
+    	anders aussieht als bei einem flat-top-sampling. Hier ist das Zeitsignal:
+    	
+    	
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-recht}
+            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+            eines Rechteckquellsignals}
+  	    \end{figure}
+  	    
+  	    Die Eigenschaften bei erhöhtem Tastverhältnis und der doppelten
+  	    Abtastfrequenz bleiben wie erwartet.\\ 
+  	    Dazu wird das Frequenzsignal erstellt:
+    	
+    	
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-zeit_3V}
+            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+            eines Rechteckquellsignals}
+  	    \end{figure}
+  	    
+    \TODO{hier das Frequenzsignal des Rechtcks einfügen}
+    
+    
+    	Zuletzt werden die Zeit- und die Frequenzbereiche des tiefpassgefilterten
+    	Rechtecks betrachtet. Zuerst der Zeitbereich:
+    	
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-tp-recht}
+            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+            eines tiefpassgefilterten Rechteckquellsignals}
+  	    \end{figure}
+    	 
+    	Das Rechtecksignal verläuft rundlich, man kann ein urspüngliches Rechteck
+    	kaum wieder erkennen. Dennoch passt sich die obere Seite des
+    	Abtastrechtecks der Form des Quellsignals an. Wieder bleiben die erwarteten
+    	Eigenschaften bei verändertem $\alpha$ und veränderter Abtastfrequenz
+    	erhalten.
+    	
+    	Im Zeitbereich sieht die Abtastung folgendermaßen aus:
+    	
+    	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/shape-top-zeit_3V}
+            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+            eines tiefpassgefilterten Rechteckquellsignals}
+  	    \end{figure}
+    	
+    \TODO{Freuenzsignal des tp Rechtecks einfügen}
+    
+    	Man sieht, dass
+    	
     \end{quote}%beende Auswertung
     
     \section{Zusammenfassung}
@@ -616,9 +703,6 @@
     	\TODO{Zusammenfassung schreiben}
     \end{quote}%beende Zusammenfassung
          
-
-\TODO{Boris: öfter mal ein Überraschungsgeschenk für deine beste Freundin
-besorgen!!}
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------    
