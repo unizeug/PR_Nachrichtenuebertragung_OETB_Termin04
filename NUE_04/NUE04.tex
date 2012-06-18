@@ -670,6 +670,53 @@
     	
     \TODO{Freuenzsignal des tp Rechtecks einfügen und bisschen was erklären}
        	
+       	
+       	Nun werden die Ergebnisse der Sprachübertragung ausgewertet. Zuerst kann
+       	man die Plots für die aufgenommenen Sprachsignale und ihre Abtastungen
+       	sehen:
+       	
+       	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/sprache_flat-top}
+            \caption{Sprachsignal und die jeweilige flat-top Abtastung}
+  	    \end{figure}
+       	
+       	Man kann sehen, dass die flat-top Abtastung auf jeden beliebige Signal
+       	anwendbar ist. Wie erwartet, nehmen die abtastenden Rechtecke als
+       	jeweilige Amplitude den Amplitudenwert des Sprachsignals an der
+       	zeitlichen Position der Abtastung an und behalten diese für die gesamte
+       	Abtastperiode.\\
+       	Auch für die shape-top Abtastung ist das Quellsignal nicht relevant:
+       	
+       	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/sprache_shape-top}
+            \caption{Sprachsignal und die jeweilige shape-top Abtastung}
+  	    \end{figure}
+       	
+       	Die Abtastrechtecke nehmen an der Stelle der Abtastung die Amplitude des
+       	Quellsignals an und verlaufen auch weiterhin, wie beim shape-top
+       	sampling zu erwarten, über die gesamte Abtastperiode mit der
+       	Quellsignalamplitude. Beide Abtastsignale bestätigen unsere
+       	Erwartungen.\\
+       	
+       	Zusätzlich wurde ein weiteres beliebiges Sprachsignal aufgezeichnet,
+       	welches zuerst mit dem flat-top Verfahren abgetastet und später anhand
+       	eines auf dem Steckbrett vorhandenen Tiefpasses rekonstruiert wurde. Das
+       	aufgenommene Sprachsignal und die dazugehörige Rekonstruktion ist hier
+       	zu sehen:
+       	
+       	\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        clip]{./Bilder/sprache+rekon}
+            \caption{Sprachsignal und die jeweilige Rekonstruktion}
+  	    \end{figure}
+       	
+       	
+       	
     \end{quote}%beende Auswertung
     
     \section{Zusammenfassung}
