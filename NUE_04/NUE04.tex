@@ -295,10 +295,41 @@
         Abtastung mit $\alpha \cdot si(\frac{\omega \alpha T}{2})$ bilden) ebenfalls
         verschwindend gering. Ist das $\alpha$ aber $1$, beträgt die Amplitude des
         Basisbands $1$ und die folgenden Peakamplituden lassen sich wie bereits
-        erwähnt berechnen.
+        erwähnt berechnen.\\
         
-        \TODO{Ist das okay so Boris? Wollen wir hier noch erwähnen, dass bei
-        bestimmten alphas die Spektren wegfallen?}
+        Interessant ist die Frage, an welchen Stellen sich diese Peaks auflösen,
+        da eine si-Funktion bei einem Argument von einem Vielfachen von $\pi$
+        den Wert null annimmt. Diese Überlegung kann man sowohl mithilfe des
+        shape-top samplings, als auch anhand des flat-top-samplings lösen:\\
+        
+        Bei dem flat-top Verfahren angefangen, sieht man, wie erwähnt, dass die
+        Amplituden der weiderholten Peaks im Spektrum mit dem Faktor 
+        $\alpha \cdot si(\frac{\omega \alpha T}{2})$ abnehmen. Wenn man das
+        Argument mit $T = \frac{2\pi}{\omega_T}$ umstellt, erhält man:
+        
+        \begin{equation*}
+        	\begin{split}
+        		si(\frac{\omega \alpha T}{2}) = si(\frac{\omega \alpha
+        		2\pi}{2 \cdot \omega_T})
+        	\end{split}
+        \end{equation*}
+        
+        Für das gegebene $\alpha = 0.5$ und das $\omega_T = 20 \pi kHz$, muss
+        das $\omega$ ein doppeltes Vielfaches der Abtastfrequenz sein. Mit
+        $\omega = 2\omega_T$ oder $\omega = 4\omega_T$ usw. wird das Argument
+        der si-Funktion zu einem ganzzahligen Vielfachen von $\pi$ und die Peaks
+        im Spektrum an dieser Stelle der Frequenz heben sich auf.\\
+        
+        Das gleiche Ergebnis kann man feststellen, wenn man sich den jeweiligen
+        Faktor bei der shape-top-Abtastung ansieht. Die Peakamplituden im
+        Spektrum werden mit $\alpha \cdot si(k \pi \alpha)$ kleiner. Dies
+        bedeutet, dass mit $\alpha = 0.5$ jede zweite Wiederholung der Peakpaare
+        zu null werden. Da die Wiederholungen stets bei ganzen Vielfachen von
+        $\omega_T$ auftreten, fällt auch hier jedes Peakpaar bei dem doppelten
+        Vielfachen von $\omega_T$ weg.\\
+        Bei einer breiteren Skizze des Spektrums, müsste auf diesen
+        mathematischen Hintergrund Rücksicht genommen werden.
+        
         
     \end{quote}  % Ende Subsection    
     
@@ -359,27 +390,16 @@
         eine Amplitude von $5V$ und ein
         variables Tastverhältnis von $0.2, 0.5$ oder $0.7$.\\
         
-        \TODO{Vorbereitungsaufgaben nochmals plotten} \\
-        
         Zuerst betrachten wir die Simmulationsergebnisse der Abtastung durch
         Signalausblendung:
         
          \begin{figure}[H]
         \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/shape-top-zeit_1V}
-            \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 1V}
+        clip]{./Bilder/shape-top-zeit_5V}
+            \caption{Zeitsignal mit shape-top-sampling}
   	    \end{figure}
   	    
-  	    
-  	    \begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/shape-top-freq_1V}
-            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
-            1V}
-  	    \end{figure}
-
   	    Im Zeitsignal sieht man eine maximale Amplitude von $10V$, welche durch
   	    die Multiplikation von den $2V$ des Quellsignals und dem $5V$ des
   	    Abtastsignals entsteht. Die Form der Rechtecke nehmen oben den
@@ -388,32 +408,32 @@
   	    die Verdopplung der Abtastfrequenz ungefähr doppelt so viele abgetastete Stellen ergibt und 
   	    dass ein größeres Tastverhältnis die Breite der Dauer der Abtastung erhöht. 
   	    Als Umhüllende haben wir das Quellsignal verwendet.\\
-  	    Im simmulierten Spektrum kann man erkennen, dass die Amplituden der
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+        clip]{./Bilder/shae-top-freq_5V}
+            \caption{Frequenzsignal mit shape-top-sampling}
+  	    \end{figure}
+
+
+  	    Im simulierten Spektrum kann man erkennen, dass die Amplituden der
   	    drei Basisbänder für die drei Tastverhältnisse exakt dem eingesetzten
-  	    Tastverhältnis $\alpha$ mal $1V$ entsprechen. Mit wachsender Frequenz
+  	    Tastverhältnis $\alpha$ mal $5V$ entsprechen. Mit wachsender Frequenz
   	    nehmen die Peaks deutlich an Amplitude ab. Außerdem kann man sehen, dass
   	    die auftretenden Peakpaare immer die gleiche Amplitude besitzen. Dieses
   	    unverzerrte Spektrum war bei einer shape-top Abtastung zu erwarten.
   	    Die Umhüllende des Spektrums ist eine Si-Funktion.
   	    \vspace{1em}
   	    
-  	    Nun betrachten wir die Simmulationsergebnisse der Abtastung mit
+  	    Nun betrachten wir die Simulationsergebnisse der Abtastung mit
   	    Signalverbreiterung:
   	    
   	    \begin{figure}[H]
     \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/flat-top-zeit_1V}
-            \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 1V}
-  	    \end{figure}
-  	    
-  	    
-  	    \begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/flat-top-freq_1V}
-            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
-            1V}
+        clip]{./Bilder/flat-top-zeit_5V}
+            \caption{Zeitsignal mit flat-top-sampling}
   	    \end{figure}
   	    
   	    Die Amplituden, die Breiten und die Häufigkeiten der abgetasteten Stellen
@@ -423,6 +443,15 @@
   	    sondern ab der Abtaststelle die Sinusamplitude annehmen und durch das
   	    Hold-Glied über die Dauer der Abtastung behalten. Daher sind diese
   	    Rechtecke oben flach.\\
+  	    
+  	    \begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+        clip]{./Bilder/flat-top-freq_5V}
+            \caption{Frequenzsignal mit shape-top-sampling}
+  	    \end{figure}
+  	    
+  	    
   	    Durch die DFT dieser Rechtecke aus dem Zeitsignal entstehen in dem
   	    Spektrum Peaks mit frequenzabhängiger Amplitude, die deutlich
   	    besser in die umhüllende Si-Funktion passen, als das Spektrum einer
