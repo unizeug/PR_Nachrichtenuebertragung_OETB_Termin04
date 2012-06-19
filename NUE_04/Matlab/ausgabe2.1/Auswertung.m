@@ -1,7 +1,7 @@
 %Auswertung
 clear;clc;close all;
 %% einlesen der gemessenen Daten
-a = load('shape-top-sin-a02_10kHz+rekon');
+a = load('shape-top-tp-recht-a02_10kHz+rekon');
 b = load('shape-top-sin-a05_10kHz+rekon');
 c = load('shape-top-sin-a07_10kHz+rekon');
 d = load('shape-top-sin-a02_20kHz+rekon');

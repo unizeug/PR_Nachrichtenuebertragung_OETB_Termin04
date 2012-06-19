@@ -7,32 +7,37 @@ function FFTshiftplotZP6subplots(a,b,c,d,e,g,farbe, fignum)
 % fignum    - Nummer der figure
 
 %% Zeropadding ersmal ungenutzt
-% Zeropadding Faktor
-% zpf = 1;
-% 
-% temp = zeros(length(a)*zpf,1);
-% temp(1:length(a)) = a;
-%  
-% a. = temp;
-% 
-% T_ges = T_ges * zpf;
+
+zpf = 1;
 
 %% plot
 figure(fignum);
 
 subplot(2,3,1);
     %Berechnung des Spektrums
-    a_DFT = fftshift(fft(a.A));
-    Na = length(a.A);
+    % Zeropadding Faktor
+     
+
+     temp = zeros(length(a.A)*zpf,1);
+     temp(1:length(a.A)) = a.A;
+
+     aA = temp;
+
+     %T_ges = a.Tinterval*a.Length;
+     %T_ges = T_ges * zpf;
+     
+     
+    a_DFT = fftshift(fft(aA));
+    Na = length(aA);
     %Betragsspektrum
-    a_DFT_abs = 10*LOG10(abs(a_DFT)/Na);
+    a_DFT_abs = 10*LOG10(abs(a_DFT)/(Na/zpf));
     %Frequenzachse
     f_Ta = 1/a.Tinterval;
     f_DFTa = f_Ta/(Na-1)*((-Na/2):(Na/2-1));
 
     plot(f_DFTa,a_DFT_abs);
 %    axis tight;
-%    AXIS(-1*10^6 1*10^6 0 5*10^-3])
+    AXIS([0 300*10^3 -60 0])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
