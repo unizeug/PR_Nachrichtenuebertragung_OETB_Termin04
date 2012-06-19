@@ -35,25 +35,63 @@ for f_c = [10000 20000] % in kHz
         
         % unipolares Rechtecksignal mit 0..3 V Spannung als Abtastsignal mit f_c als Frequenz
         % function res = rechteck(A,alpha,f,f_T,T_ges)
-        c = rechteck(2.5, alpha_c, f_c, f_T_sim, T_ges)+2.5;
+        c = rechteck(0.5, alpha_c, f_c, f_T_sim, T_ges)+0.5;
+        
         % Signalausblendung (Shape-Top-Sampling);
-        u_sin_pam = u_sin.*(c);         % Zeitsignal nach Abtastung mit Signalausblendung
+        u_sin_pam = u_sin.*c;                       % Zeitsignal nach Abtastung mit Signalausblendung
         U_sin_pam = abs(fft(u_sin_pam)./N);         % Betragsfrequenzgang nach Abtastung mit Signalausblendung
         
-%         figure(1);
-%         subplot(Nc,Na,i);
-%         stem(t(1:n_u_vis),u_sin_pam(1:n_u_vis));
-%         axis tight;
-%         xlabel('t in s');
-%         ylabel('Amplitude in V');
-%         title(['Shape-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
-%         figure(2);
-%         subplot(Nc,Na,i);
-%         plot(nf(1:n_U_vis)./1000,U_sin_pam(1:n_U_vis)./N);
-%         axis tight;
-%         xlabel('f in kHz');
-%         title(['Shape-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+        % Si-Funktion erstellen
+        N = length(c);
+        zero_padded = zeros(1,N);
+        zero_padded(1:N/f_c) = c(1:N/f_c);
         
+        zero_padded = zero_padded;
+        u_si = abs(fft(zero_padded)./(N/f_c));
+ 
+%             %Plot-Befehle shape-top sampling
+%             figure(1);
+%             subplot(Nc,Na,i);
+%             stem(t(1:n_u_vis),u_sin_pam(1:n_u_vis));
+%             axis tight;
+%             xlabel('t in s');
+%             ylabel('Amplitude in V');
+%             title(['Shape-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+%             hold on
+%             plot(t(1:n_u_vis), 3*u_sin(1:n_u_vis), 'r');
+%             hold off
+%             figure(2);
+%             subplot(Nc,Na,i);
+%             plot(nf(1:n_U_vis)./1000,U_sin_pam(1:n_U_vis)./N);
+%             axis tight;
+%             xlabel('f in kHz');
+%             title(['Shape-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+%             hold on
+%             plot(nf(1:n_U_vis)./1000, u_si(1:n_U_vis)./N, 'r');
+%             hold off
+
+%        figure(1);
+%        subplot(Nc,Na,i);
+%        stem(t(1:n_u_vis),u_sin_pam(1:n_u_vis));
+%        axis tight;
+%        xlabel('t [s]');
+%        ylabel('Amplitude [V]');
+%        title(['\alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+%        hold on
+%        plot(t(1:n_u_vis), 3*u_sin(1:n_u_vis), 'r');
+%        hold off
+%        
+%        figure(2);
+%        subplot(Nc,Na,i);
+%        plot(nf(1:n_U_vis)./1000,U_sin_pam(1:n_U_vis));
+%        hold on
+%        plot(nf(1:n_U_vis)./1000, u_si(1:n_U_vis),'r');
+%        hold off
+%        axis tight;
+%        xlabel('f [kHz]');
+%        title(['\alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c),10]);
+%        
+       
         % Signalverbreiterung (Flat-Top-Sampling);
         % function res = halteglied(x,f,f_T,T_ges);
         h = halteglied(u_sin, f_c, f_T_sim, T_ges);
@@ -61,26 +99,41 @@ for f_c = [10000 20000] % in kHz
           % Zeitsignal nach Halteglied (Sample&Hold)
           u_sin_sh = h;     
           % Zeitsignal nach Abtastung mit Signalverbreiterung
-          u_sin_sh_pam = h.*(c);      
+          u_sin_sh_pam = h.*c;      
           % Betragsfrequenzgang nach Abtastung mit Signalverbreiterung
           U_sin_sh_pam = abs(fft(u_sin_sh_pam)./N);    
-        
-        figure(3);
-        subplot(Nc,Na,i);
-        stem(t(1:n_u_vis),u_sin_sh_pam(1:n_u_vis));
-        axis tight;
-        xlabel('t in s');
-        ylabel('Amplitude in V');
-        title(['Flat-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
-        figure(4);
-        subplot(Nc,Na,i);
-        plot(nf(1:n_U_vis)./1000,U_sin_sh_pam(1:n_U_vis)./N);
-        axis tight;
-        xlabel('f in kHz');
-        title(['Flat-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
-        
+
+            %Plot-Befehle flat-top sampling
+            figure(3);
+            subplot(Nc,Na,i);
+            stem(t(1:n_u_vis),u_sin_sh_pam(1:n_u_vis));
+            axis tight;
+            xlabel('t in s');
+            ylabel('Amplitude in V');
+            title(['Flat-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+            hold on
+            plot(t(1:n_u_vis), 1*u_sin(1:n_u_vis), 'r');
+            hold off
+            figure(4);
+            subplot(Nc,Na,i);
+            plot(nf(1:n_U_vis)./1000,U_sin_sh_pam(1:n_U_vis));
+            axis tight;
+            xlabel('f in kHz');
+            title(['Flat-Top \alpha = ' num2str(alpha_c) ' und f_T = ' num2str(f_c)]);
+            hold on
+            plot(nf(1:n_U_vis)./1000, u_si(1:n_U_vis), 'r');
+            hold off
+            
         i = i + 1;
     end
 end
 
+% figure(1)
+% SUPTITLE(['\bf Shape-Top Abtastung'])
+% figure(2)
+% SUPTITLE(['\bf Shape-Top Abtastung',10,10])
+figure(3)
+SUPTITLE(['\bf Flat-Top Abtastung',10])
+figure(4)
+SUPTITLE(['\bf Flat-Top Abtastung',10,10])
 
