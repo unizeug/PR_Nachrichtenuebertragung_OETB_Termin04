@@ -1,4 +1,4 @@
-function FFTshiftplotZP6subplots(a,b,c,d,e,g,farbe, fignum)
+function FFTshiftplotZP6subplots(a,b,c,d,e,g,farbe, Form, Signal, fignum)
 %% Infos
 % y         - Zeitvektor
 % f_T       - Abtastfrequenz
@@ -10,6 +10,7 @@ function FFTshiftplotZP6subplots(a,b,c,d,e,g,farbe, fignum)
 
 % Zeropadding Faktor
 zpf = 10;
+
 
 %% plot
 figure(fignum);
@@ -24,14 +25,14 @@ subplot(2,3,1);
     a_DFT = fftshift(fft(aA));
     Na = length(aA);
     %Betragsspektrum
-    a_DFT_abs = (abs(a_DFT)/Na);
+    a_DFT_abs = (abs(a_DFT)/(Na/zpf));
     %Frequenzachse
     f_Ta = 1/a.Tinterval;
     f_DFTa = f_Ta/(Na-1)*((-Na/2):(Na/2-1));
-
+    
     plot(f_DFTa,a_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 0.5])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
@@ -45,14 +46,14 @@ subplot(2,3,2);
     b_DFT = fftshift(fft(bA));
     Nb = length(bA);
     %Betragsspektrum
-    b_DFT_abs = (abs(b_DFT)/Nb);
+    b_DFT_abs = (abs(b_DFT)/(Nb/zpf));
     %Frequenzachse
     f_Tb = 1/b.Tinterval;
     f_DFTb = f_Tb/(Nb-1)*((-Nb/2):(Nb/2-1));
 
     plot(f_DFTb,b_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 0.6])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
@@ -66,14 +67,14 @@ subplot(2,3,3);
     c_DFT = fftshift(fft(cA));
     Nc = length(cA);
     %Betragsspektrum
-    c_DFT_abs = (abs(c_DFT)/Nc);
+    c_DFT_abs = (abs(c_DFT)/(Nc/zpf));
     %Frequenzachse
     f_Tc = 1/c.Tinterval;
     f_DFTc = f_Tc/(Nc-1)*((-Nc/2):(Nc/2-1));
 
     plot(f_DFTc,c_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 1])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
@@ -87,14 +88,14 @@ subplot(2,3,4);
     d_DFT = fftshift(fft(dA));
     Nd = length(dA);
     %Betragsspektrum
-    d_DFT_abs = (abs(d_DFT)/Nd);
+    d_DFT_abs = (abs(d_DFT)/(Nd/zpf));
     %Frequenzachse
     f_Td = 1/d.Tinterval;
     f_DFTd = f_Td/(Nd-1)*((-Nd/2):(Nd/2-1));
 
     plot(f_DFTd,d_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 0.5])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
@@ -108,14 +109,14 @@ subplot(2,3,5);
     e_DFT = fftshift(fft(eA));
     Ne = length(eA);
     %Betragsspektrum
-    e_DFT_abs = (abs(e_DFT)/Ne);
+    e_DFT_abs = (abs(e_DFT)/(Ne/zpf));
     %Frequenzachse
     f_Te = 1/e.Tinterval;
     f_DFTe = f_Te/(Ne-1)*((-Ne/2):(Ne/2-1));
 
     plot(f_DFTe,e_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 0.6])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
@@ -129,14 +130,16 @@ subplot(2,3,6);
     g_DFT = fftshift(fft(gA));
     Ng = length(gA);
     %Betragsspektrum
-    g_DFT_abs = (abs(g_DFT)/Ng);
+    g_DFT_abs = (abs(g_DFT)/(Ng/zpf));
     %Frequenzachse
     f_Tg = 1/g.Tinterval;
     f_DFTg = f_Tg/(Ng-1)*((-Ng/2):(Ng/2-1));
 
     plot(f_DFTg,g_DFT_abs);
 %    axis tight;
-    AXIS([0 300000 0 0.038])
+    AXIS([0 300000 0 1])
     title('Amplitudenspektrum');
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
+    
+    SUPTITLE(['\bf '  Form   '-Top-Sampling mit Rekonstruktion bei '  Signal   'Quellsignal',10]);
