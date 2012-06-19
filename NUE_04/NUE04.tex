@@ -359,25 +359,22 @@
         eine Amplitude von $5V$ und ein
         variables Tastverhältnis von $0.2, 0.5$ oder $0.7$.\\
         
-        \TODO{Vorbereitungsaufgaben nochmals plotten} \\
-        
         Zuerst betrachten wir die Simmulationsergebnisse der Abtastung durch
         Signalausblendung:
         
          \begin{figure}[H]
         \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/shape-top-zeit_1V}
-            \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 1V}
+        clip]{./Bilder/shape-top-zeit_5V}
+            \caption{Zeitsignal mit shape-top-sampling}
   	    \end{figure}
   	    
   	    
   	    \begin{figure}[H]
     \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/shape-top-freq_1V}
-            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
-            1V}
+        clip]{./Bilder/shape-top-freq_5V}
+            \caption{Frequenzsignal mit shape-top-sampling}
   	    \end{figure}
 
   	    Im Zeitsignal sieht man eine maximale Amplitude von $10V$, welche durch
@@ -388,32 +385,31 @@
   	    die Verdopplung der Abtastfrequenz ungefähr doppelt so viele abgetastete Stellen ergibt und 
   	    dass ein größeres Tastverhältnis die Breite der Dauer der Abtastung erhöht. 
   	    Als Umhüllende haben wir das Quellsignal verwendet.\\
-  	    Im simmulierten Spektrum kann man erkennen, dass die Amplituden der
+  	    Im simulierten Spektrum kann man erkennen, dass die Amplituden der
   	    drei Basisbänder für die drei Tastverhältnisse exakt dem eingesetzten
-  	    Tastverhältnis $\alpha$ mal $1V$ entsprechen. Mit wachsender Frequenz
+  	    Tastverhältnis $\alpha$ mal $5V$ entsprechen. Mit wachsender Frequenz
   	    nehmen die Peaks deutlich an Amplitude ab. Außerdem kann man sehen, dass
   	    die auftretenden Peakpaare immer die gleiche Amplitude besitzen. Dieses
   	    unverzerrte Spektrum war bei einer shape-top Abtastung zu erwarten.
   	    Die Umhüllende des Spektrums ist eine Si-Funktion.
   	    \vspace{1em}
   	    
-  	    Nun betrachten wir die Simmulationsergebnisse der Abtastung mit
+  	    Nun betrachten wir die Simulationsergebnisse der Abtastung mit
   	    Signalverbreiterung:
   	    
   	    \begin{figure}[H]
     \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/flat-top-zeit_1V}
-            \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 1V}
+        clip]{./Bilder/flat-top-zeit_5V}
+            \caption{Zeitsignal mit flat-top-sampling}
   	    \end{figure}
   	    
   	    
   	    \begin{figure}[H]
     \centering
         \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-        clip]{./Bilder/flat-top-freq_1V}
-            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
-            1V}
+        clip]{./Bilder/flat-top-freq_5V}
+            \caption{Frequenzsignal mit shape-top-sampling}
   	    \end{figure}
   	    
   	    Die Amplituden, die Breiten und die Häufigkeiten der abgetasteten Stellen
