@@ -578,12 +578,12 @@
         	\begin{figure}[H]
             \centering
             \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-            clip]{./Bilder/shape-top-zeit_3V}
+            clip]{./Bilder/shape-top-recht_freq}
                 \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
                 eines Rechteckquellsignals}
       	    \end{figure}
       	    
-        \TODO{hier das Frequenzsignal des Rechtcks einfügen}
+        \TODO{hier das Frequenzsignal des Rechtecks einfügen}
         
         
         	Zuletzt werden die Zeit- und die Frequenzbereiche des tiefpassgefilterten
@@ -605,12 +605,12 @@
         	dem bereits erwähntem Grund viel deutlicher als gefiltertes Rechteck zu
         	erkennen.\\ 
         	
-        	Im Zeitbereich sieht die Abtastung folgendermaßen aus:
+        	Im Frequenzbereich sieht die Abtastung folgendermaßen aus:
         	
         	\begin{figure}[H]
             \centering
             \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
-            clip]{./Bilder/shape-top-zeit_3V}
+            clip]{./Bilder/shape-top-tp-recht_freq}
                 \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
                 eines tiefpassgefilterten Rechteckquellsignals}
       	    \end{figure}
@@ -619,10 +619,119 @@
         
         \end{quote}  % Ende Subsection   shape Top  
         
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \subsection{Flat-Top Sampling}
         \begin{quote}
-            \TODO{Noch das komplette Flat Top Sampling einfügen} \\
+           
+           Nun betrachten wir die Ergebnisse einer flat-top Abtastung. Begonnen
+           wird wieder mit dem Sinusquellsignal:
+           
+           \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-sinus}
+                \caption{Zeitsignal einer flat-top-sampling mit Rekonstruktion
+                eines Sinusquellsignals}
+      	    \end{figure}
+           
+           Wie bei einer flat-top Abtastung erwartet, passen sich die
+           Abtastrechtecke nicht dem Sinusverlauf an, sonder nehmen den
+           amplitudenwert des Sinus an der Abtaststelle an und behalten diesen
+           Wert mithilfe des Sample and Hold Glieds für die gesamte
+           Abtastperiode. Daher ist bei einer kleineren Abtastfrequenz ein
+           Sinussignal in der modulierten Version kaum erkennbar. Mit einer
+           höheren Abtastfrequenz kann man einen Sinusverlauf aber erahnen. Die
+           Eigenschaften durch die variable Abtastfrequenz und dem vergrößertem
+           $\alpha$ bleiben wie bei der shape-top Abtastung gleich. Die
+           Unterschiede in den rekonstruierten Signalen liegen wieder bei den
+           Gain- und Grenzfrequenzeinstellungen des verwendeten Tiefpasses.\\
+           
+           Im Frequenzbereich sieht der flat-top modulierte Sinus folgendermaßen
+           aus:
+           
+           \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-sinus_freq}
+                \caption{Frequenzsignal einer flat-top-sampling mit
+                Rekonstruktion eines Sinusquellsignals}
+      	    \end{figure}
+           
+           \TODO{Frequenzbereich und Erklärung für Sinus ergänzen}
+           
+           Für ein flat-top moduliertes Rechtecksignal erhalten wir folgende
+           Zeitsignale:
+           
+           \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-recht}
+                \caption{Zeitsignal einer flat-top-sampling mit Rekonstruktion
+                eines Rechteckquellsignals}
+      	    \end{figure}
+      	    
+      	    Da ein unipolares Rechtecksignal, wie bereits erwähnt, nur aus
+      	    entweder einer konstanten Amplitude oder der Amplitude $0 V$ besteht,
+      	    ist zwischen einem flat-top und einem shape-top moduliertem
+      	    Rechtecksignal kein Unterschied zu sehen, da die Oberflächen der
+      	    Abtastrechtecke stets flach sein werden. Dies sieht man auch bei
+      	    unseren modulierten Signalen für variable Abtastfrequenzen und
+      	    Tastverhältnisse.\\
+      	    
+      	    Im Frequenzbereich sieht der flat-top modulierte Rechteck wie folgt
+      	    aus:
+      	    
+      	    \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-recht_freq}
+                \caption{Frequenzsignal einer flat-top-sampling mit
+                Rekonstruktion eines Rechteckquellsignals}
+      	    \end{figure}
+      	    
+      	    \TODO{Frequenzbereich und Erklärung für Rechteck ergänzen}
+      	    
+      	    Zuletzt wird der tiefpassgefilterte Rechteck mit dem flat-top
+      	    Verfahren abgetastet und im Zeit- und Frequenzberech untersucht:
+      	    
+      	    \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-tp-recht}
+                \caption{Zeitsignal einer flat-top-sampling mit Rekonstruktion
+                eines tiefpassgefilterten Rechteckquellsignals}
+      	    \end{figure}
+      	    
+      	    Der tiefpassgefilterte Rechteck hat erneut die gleich Form wie bei
+      	    der shape-top Abtastung. Dementsprechend passen sich die flat-top 
+      	    Abtastrechtecke dem Quellsignal an und modulieren ihn. Die
+      	    Rekonstruktionen sehen bei einer Abtastfreuquenz von $20 kHz$
+      	    erneut deutlich besser aus, als bei den $10 kHz$. Dies liegt, wie
+      	    bei der shape-top Abtastung bereits erwähnt, an dem Verhältnis
+      	    zwischen der im Signal verwendeten Bandbreite und der
+      	    Abtastfrequent. Bei der kleineren Abtastfrequenz tritt
+      	    Aliasing auf, wodurch die Rekonstruktion verzerrter ist, als bei der
+      	    hohen Abtastfrequenz, bei der die mindestens doppelte Bandbreite
+      	    gewährleistet ist.\\
+      	    
+      	    Im Frequenzbereich liefert der tiefpassgefilterte Rechteck folgende
+      	    Ergebnisse:
+      	    
+      	    \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/flat-top-tp-recht_freq}
+                \caption{Frequenzsignal einer flat-top-sampling mit
+                Rekonstruktion eines tiefpassgefilterten Rechteckquellsignals}
+      	    \end{figure}
+      	    
+      	    \TODO{Frequenzbereich und Erklärung für tiefpassgefilterten Rechteck
+      	    ergänzen}
+            %\TODO{Noch das komplette Flat Top Sampling einfügen} \\
         \end{quote}  % Ende Subsection   flat Top    	
+       	
+       	
+       	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
        	
        	\subsection{Sprachsignal}
         \begin{quote}
