@@ -35,10 +35,9 @@ for f_c = [10000 20000] % in kHz
         
         % unipolares Rechtecksignal mit 0..3 V Spannung als Abtastsignal mit f_c als Frequenz
         % function res = rechteck(A,alpha,f,f_T,T_ges)
-        c = rechteck(1, alpha_c, f_c, f_T_sim, T_ges)+1;
-        
+        c = rechteck(2.5, alpha_c, f_c, f_T_sim, T_ges)+2.5;
         % Signalausblendung (Shape-Top-Sampling);
-        u_sin_pam = u_sin.*c;         % Zeitsignal nach Abtastung mit Signalausblendung
+        u_sin_pam = u_sin.*(c);         % Zeitsignal nach Abtastung mit Signalausblendung
         U_sin_pam = abs(fft(u_sin_pam)./N);         % Betragsfrequenzgang nach Abtastung mit Signalausblendung
         
 %         figure(1);
@@ -62,7 +61,7 @@ for f_c = [10000 20000] % in kHz
           % Zeitsignal nach Halteglied (Sample&Hold)
           u_sin_sh = h;     
           % Zeitsignal nach Abtastung mit Signalverbreiterung
-          u_sin_sh_pam = h.*c;      
+          u_sin_sh_pam = h.*(c);      
           % Betragsfrequenzgang nach Abtastung mit Signalverbreiterung
           U_sin_sh_pam = abs(fft(u_sin_sh_pam)./N);    
         

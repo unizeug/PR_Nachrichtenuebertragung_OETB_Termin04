@@ -16,7 +16,7 @@
 
 
 \input{../../packages/tu_header_8}
-%\begin{document}
+% \begin{document}
 
 % \lstlistoflistings
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
@@ -158,7 +158,7 @@
         	\end{split}
         \end{equation*}        
         
-        Diese Fourier-Transformation verdeutlicht, dass das gesamte Amplitudensprktrum im Frequenzbereich um den Faktor
+        Diese Fourier-Transformation verdeutlicht, dass das gesamte Amplitudenspektrum im Frequenzbereich um den Faktor
         $\alpha$ gedämpft wird. Außerdem werden alle Bänder mit $k > 0$
         zusätzlich um den Faktor $si(k \pi \alpha)$ gedämpft. Falls das Produkt $k \cdot \alpha$ eine ganze Zahl und somit 
         das Produkt innerhalb der $si()$ Funktion
@@ -176,7 +176,7 @@
         
         Dieses Verhalten im Frequenzbereich ist ein großer Vorteil dieses Verfahrens der Pulsamplitudenmodulation. Die
         Amplitudenspektren werden zwar gedämpft, jedoch beiben sie unverzerrt.
-        Diese Dämpfung lässt sich beim Empfänger jedoch wieder durch eine
+        Diese Dämpfung lässt sich beim Empfänger wieder durch eine
         Verstärkung kompensieren. Problematisch wird es erst, wenn das $\alpha$ so klein wird, 
         dass die Amplituden des modulierten Signals auf die Größe der Rauschamplituden gedämpft werden.\vspace{1em}
         
@@ -292,7 +292,7 @@
         $0$. Somit werden alle folgenden Peakamplituden (deren Amplituden sich bei der
         shape-top Abtastung mit $\alpha \cdot si(k \pi \alpha)$ und bei der flat-top
         Abtastung mit $\alpha \cdot si(\frac{\omega \alpha T}{2})$ bilden) ebenfalls
-        verschwindend gering. ist das $\alpha$ aber $1$, beträgt die Amplitude des
+        verschwindend gering. Ist das $\alpha$ aber $1$, beträgt die Amplitude des
         Basisbands $1$ und die folgenden Peakamplituden lassen sich wie bereits
         erwähnt berechnen.
         
@@ -308,10 +308,10 @@
         \TODO{hier die Skizze}
         
         Zuerst müssen die Quellsignale moduliert werden. Das Sinussignal
-        kommt direkt aus der Quelle auf dem Steckbrett mit $2 kHz$ Fequenz und
+        kommt direkt aus dem Block Master Signals auf dem Steckbrett mit $2 kHz$ Fequenz und
         $2V$ Amplitude. An diesem Signal wird nichts verändert. Beim
-        Rechtecksignal beträgt die Amplitude der Quelle auf dem Steckbrett $5V$, daher 
-        muss das Signal zunächst in einen Verstärker/Dämpfer geführt werden.
+        Rechtecksignal muss das Signal jedoch noch einmal gedämpft werden, da die Amplitude $5V$ und nicht die
+        gewünschten $4V$ beträgt.
         Dazu verwenden wir den Addierer mit dem integrierten Dämpfer und
         reduzieren das Signal von $5V$ zuerst mit dem Faktor $\frac{4}{5}$ auf $4V$ und addieren dann $-2V$ drauf, um
         ein bipolares Rechtecksignal mit einer Peak-to-Peak Amplitude von $-2V$
@@ -324,7 +324,7 @@
         entsprechend abgetastet und kann mithilfe des PicoScope grafisch
         dargestellt werden.\\ 
         Das modulierte Rechteckquellsignal wird ebenfalls in den
-        zustandgesteuerten Schlater geführt, wo es dann durch shape-top sampling
+        zustandsgesteuerten Schlater geführt, wo es dann durch shape-top sampling
         abgetastet wird. 
         
         \vspace{0.5em}
@@ -351,18 +351,18 @@
         und Signalverbreiterung für ein Sinussignal als Quellsignal und der
         Abtastfrequenz von $400 kHz$ ausgeführt. Das verwendete Quellsignal
         hatte eine Amplitude von $2V$ und eine Frequenz von $2 kHz$. Das
-        Abtastrechtecksignal hatte eine variable Frequenz ($10 kHz und 20 kHz$),
-        eine variable Amplitude (gewählt haben wir $1V, 2V$ und $3V$) und ein
+        Abtastrechtecksignal hatte eine variable Frequenz ($10 kHz$ und $20 kHz$),
+        eine Amplitude von $5V$ und ein
         variables Tastverhältnis von $0.2, 0.5$ oder $0.7$.\\
-        Für den hiesigen Vergleich haben wir nur die Abtastamplituden $1V$ udn $3V$
-        verwendet.
+        
+        \TODO{Vorbereitungsaufgaben nochmals plotten} \\
         
         Zuerst betrachten wir die Simmulationsergebnisse der Abtastung durch
         Signalausblendung:
         
          \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.7, trim = 1.5cm 6cm 1cm 8cm,
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
         clip]{./Bilder/shape-top-zeit_1V}
             \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 1V}
   	    \end{figure}
@@ -370,14 +370,14 @@
   	    
   	    \begin{figure}[H]
     \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
         clip]{./Bilder/shape-top-freq_1V}
             \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
             1V}
   	    \end{figure}
-  	    
-  	    Im Zeitsignal sieht man eine maximale Amplitude von $2V$, welche durch
-  	    die Multiplikation von den $2V$ des Quellsignals und dem $1V$ des
+
+  	    Im Zeitsignal sieht man eine maximale Amplitude von $10V$, welche durch
+  	    die Multiplikation von den $2V$ des Quellsignals und dem $5V$ des
   	    Abtastsignals entsteht. Die Form der Rechtecke nehmen oben den
   	    Sinusverlauf des Quellsignals an, was im Zeitsignal den Unterschied zu
   	    der flat-top Abtastung ausmacht. Zusätzlich kann man deutlich sehen, dass
@@ -391,34 +391,6 @@
   	    die auftretenden Peakpaare immer die gleiche Amplitude besitzen. Dieses
   	    unverzerrte Spektrum war bei einer shape-top Abtastung zu erwarten.
   	    Die Umhüllende des Spektrums ist eine Si-Funktion.
-  	    
-    	Wenn man nun die Amplitude des Abtastsignals erhöht, erhält man folgende
-    	Plots:
-    	
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-zeit_3V}
-            \caption{Zeitsignal mit shape-top-sampling und Abtastamplitude 3V}
-  	    \end{figure}
-  	    
-  	    
-  	    \begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-freq_3V}
-            \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
-            3V}
-  	    \end{figure}
-  	    
-  	    
-  	    Im Zeitsignal beträgt die Amplitude diesmal $6V$, welche durch die
-  	    Multiplikation von $2V \cdot 3V$ entsteht. Alle anderen Auswirkungen der
-  	    Tastfrequenz und des Tastverhältnisses bleiben gleich.\\
-  	    Auch im Spektrum liegt der einzige Unterschied in den Maximalamplituden,
-  	    welche nun um den Faktor $3$ (durch die $3V$ Amplitude des Abtastsignals)
-  	    größer sind.
-  	    
   	    \vspace{1em}
   	    
   	    Nun betrachten wir die Simmulationsergebnisse der Abtastung mit
@@ -426,7 +398,7 @@
   	    
   	    \begin{figure}[H]
     \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
         clip]{./Bilder/flat-top-zeit_1V}
             \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 1V}
   	    \end{figure}
@@ -434,7 +406,7 @@
   	    
   	    \begin{figure}[H]
     \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
+        \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
         clip]{./Bilder/flat-top-freq_1V}
             \caption{Frequenzsignal mit shape-top-sampling und Abtastamplitude
             1V}
@@ -453,31 +425,6 @@
   	    shape-top Abtastung. Ansonsten verhält sich das Spektrum im Bezug auf
   	    Tastfrequenz und -verhältnis nicht anders als bei der Abtastung durch
   	    Signalausblendung.
-  	    
-  	    Nun wird wieder die Abtastamplitude erhöht:
-        
-        
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 1.5cm 6cm 1cm 8cm,
-            clip]{./Bilder/flat-top-zeit_3V}
-                \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 3V}
-        \end{figure}
-        
-        
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 1.5cm 6cm 1cm 8cm,
-            clip]{./Bilder/flat-top-freq_3V}
-                \caption{Frequenzsignal mit flat-top-sampling und Abtastamplitude
-                3V}
-        \end{figure}
-        
-        
-        Die Amplituden im Zeitsignal betragen wieder $6V$ und die Amplituden der
-        Basisbänder nehmen die Werte $3V \cdot \alpha$ an. Ansonsten ist das
-        Spektrum erneut deutlich verzerrter und alle anderen erwarteten
-        Ergebnisse können auch hier wahrgenommen werden. 
         
     \end{quote}  % Ende Subsection	
 
@@ -493,7 +440,7 @@
          
          Nachdem wir die beiden realisierbaren, nichtidealen Abtastverfahren
          theoretisch realisiert haben, wurde nun die praktische Untersuchung
-         dieser Verfahren Pulsamplitudenmodulation zur Diskretisierung von
+         dieser Verfahren der Pulsamplitudenmodulation zur Diskretisierung von
          zeitkontunierlichen Signalen durchgeführt. Dazu wurde, je nachdem
          welches Abtastverfahren untersucht werden sollte, eine
          Pulsamplitudenmodulationstrecke mit verschiedenen variablen Parametern
@@ -509,7 +456,7 @@
          
          Als Quellsignale wurden ein Sinus- und ein Rechtecksignal, sowie ein
          Rechtecksignal mit vorheriger RC-Tiefpassfilterung eingesetzt. Für den
-         Sinus verwendeten wir die Quelle auf dem Steckbrett, welcher uns, wie
+         Sinus verwendeten wir den Block Master Signals auf dem Steckbrett, welcher uns, wie
          bereits in der Vorbereitungsaufgabe zum Versuchsaufbau erklärt, eine
          Amplitude von $2V$ und eine Frequenz von $2 kHz$ zur Verfügung
          stellte.\\
@@ -525,7 +472,7 @@
          Die Dämpfung ist ebenfalls durch ein Rädchen einstellbar. Somit konnten
          wir das erwünschte Rechteckquellsignal für die Abtastung erstellen.\\
          Als letztes brauchten wir ein RC-tiefpassgefiltertes Rechtecksignal,
-         welches ziemlich leicht zu realisieren war. das zuvor erstellte
+         welches ziemlich leicht zu realisieren war. Das zuvor erstellte
          Rechteck wurde vor der Abtastung durch einen RC-Filter auf dem
          Steckbrett geführt und konnte dann als drittes Quellsignal verwendet
          werden.\\
@@ -550,8 +497,6 @@
          Das Ergebis beider Abtastungen der Sprachübertragung ist ebenfalls in
          der Auswertung zu sehen.
          
-         \TODO{so okay Boris?}
-         
    	\end{quote}%beende Labordurchführung
 
 %--------------------------------------------------------------------
@@ -559,169 +504,213 @@
 
     
     \section{Auswertung}
-    \begin{quote}    
+    \begin{quote}
     
-    	Zuerst werden die Zeitbereiche eines shape-top abgetasteten
-    	Sinusquellsignals betrachtet.
+        \subsection{Shape-Top Sampling}
+        \begin{quote}    
+        	Zuerst werden die Zeitbereiche eines shape-top abgetasteten
+        	Sinusquellsignals betrachtet.
+            
+        	\begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+                clip]{./Bilder/shape-top-sinus}
+                    \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+                    eines Sinusquellsignals}
+          	\end{figure}
+      	    
+      	    Man kann sehen, dass mit wachsendem Tastverhältnis $\alpha$ die Breite
+      	    der Abtastdauer zunimmt. Mit der doppelten Abtastfrequenz ist es
+      	    sichtbar, dass mit der doppelten Häufigkeit abgetastet wird. Die
+      	    rekonstruierten Signale konnten wir anhand eines Tiefpasses erstellen.
+      	    Das abgetatstete Signal durchlief den Tiefpass auf dem Seckbrett,
+      	    welcher ein einstellbares Gain besitzt. Je nachdem wie das Gain und die
+      	    ebenfalls einstellbare Grenzfrequenzes auf dem Tiefpass eingestellt
+      	    war, variierte die Amplitude und die Phase des rekonstruierten Signals.
+      	    Da dies nicht der Schwerpunkt des Praktikums war, gaben wir uns damit
+      	    zufrieden, wenn die Rekonstruktion einen erkennbaren Sinus wiedergab.\\
+      	    
+      	    Wenn man sich den Frequenzbereich ansieht, fällt folgendes auf:
+      	    
+      	    
+        	\begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/shape-top-sinus_freq}
+                \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+                eines Sinusquellsignals}
+      	    \end{figure}
+      	    
+        \TODO{Frequenzbereich der Sinus shape top abtastung einfügen und ein
+        bisschen dazu erklären, was man sieht}
         
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-sinus}
-            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
-            eines Sinusquellsignals}
-  	    \end{figure}
-  	    
-  	    Man kann sehen, dass mit wachsendem Tastverhältnis $\alpha$ die Breite
-  	    der Abtastdauer zunimmt. Mit der doppelten Abtastfrequenz ist es
-  	    sichtbar, dass mit der doppelten Häufigkeit abgetastet wird. Die
-  	    rekonstruierten Signale konnten wir anhand eines Tiefpasses erstellen.
-  	    Das abgetatstete Signal durchlief den Tiefpass auf dem Seckbrett,
-  	    welcher ein einstellbares Gain besitzt. Je nachdem wie das Gain und die
-  	    ebenfalls einstellbare Grenzfrequenzes auf dem Tiefpass eingestellt
-  	    war, variierte die Amplitude und die Phase des rekonstruierten Signals.
-  	    Da dies nicht der Schwerpunkt des Praktikums war, gaben wir uns damit
-  	    zufrieden, wenn die Rekonstruktion einen erkennbaren Sinus wiedergab.\\
-  	    
-  	    Wenn man sich den Frequenzbereich ansieht, fällt folgendes auf:
-  	    
-  	    
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-sinus_freq}
-            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
-            eines Sinusquellsignals}
-  	    \end{figure}
-  	    
-    \TODO{Frequenzbereich der Sinus shape top abtastung einfügen und ein
-    bisschen dazu erklären, was man sieht}
-    
-    	Bei dem Rechteckquellsignal ist ein ähnliches Ergebnis zu sehen, wobei die
-    	Oberseite des Abtastrechtecks des shape-top-samplings bei einem Rechteck
-    	nicht anders aussieht, als bei einem flat-top-sampling. Hier ist das
-    	Zeitsignal:
-    	   	
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-recht}
-            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
-            eines Rechteckquellsignals}
-  	    \end{figure}
-  	    
-  	    Die Eigenschaften bei erhöhtem Tastverhältnis und der doppelten
-  	    Abtastfrequenz bleiben wie erwartet. Es ist deutlich erkennbar, dass
-  	    die rekonstruierten Signale bei der Abtastfrequenz von $10 kHZ$ nicht
-  	    einen sehr klar sichtbaren Rechteck wiedergeben. Dies ändert sich bei
-  	    einer Abtastfrequenz von $20 kHz$. Dies liegt daran, dass die $10 kHZ$
-  	    nicht der doppelten Bandbreite des Signals entspricht, welche ungefähr
-  	    $8 kHz$ betrug. Dadurch können sich die periodischen Erweiterungen
-  	    im Frequenzbereich überlagern und es entsteht Aliasing, welcher im
-  	    Nachhinein nicht mehr korrigierbar ist. Tasten wir aber mit $20 kHZ$
-  	    ab, ist die Abtastfrequenz mer als doppelt so groß wie die Bangbreite
-  	    des Signals und Aliasing kann ausgeschlossen werden. Dadurch werden die
-  	    Rekonstruktionen, später auch bei dem rifpassgefiltertem
-  	    Rechtecksignal, deutlcih erkennbarer und unverzerrter als die
-  	    Rekonstruktionen der mit $10 kHZ$ abgetasteten Signalen.\\
-  	    
-  	    Nun wird auch ein Frequenzgang dieses Rechtecksignals erstellt:
-    	
-    	
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-zeit_3V}
-            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
-            eines Rechteckquellsignals}
-  	    \end{figure}
-  	    
-    \TODO{hier das Frequenzsignal des Rechtcks einfügen}
-    
-    
-    	Zuletzt werden die Zeit- und die Frequenzbereiche des tiefpassgefilterten
-    	Rechtecks betrachtet. Zuerst der Zeitbereich:
-    	
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-tp-recht}
-            \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
-            eines tiefpassgefilterten Rechteckquellsignals}
-  	    \end{figure}
-    	 
-    	Das tiefpassgefilterte Rechtecksignal verläuft rundlich, man kann ein
-    	urspüngliches Rechteck kaum wieder erkennen. Dennoch passt sich die obere Seite des
-    	Abtastrechtecks der Form des Quellsignals an. Wieder bleiben die erwarteten
-    	Eigenschaften bei verändertem $\alpha$ und veränderter Abtastfrequenz
-    	erhalten und die Rekonstruktionen sind bei einer Abtastung mit $20 kHZ$ aus
-    	dem bereits erwähntem Grund viel deutlicher als gefiltertes Rechteck zu
-    	erkennen.\\ 
-    	
-    	Im Zeitbereich sieht die Abtastung folgendermaßen aus:
-    	
-    	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/shape-top-zeit_3V}
-            \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
-            eines tiefpassgefilterten Rechteckquellsignals}
-  	    \end{figure}
-    	
-    \TODO{Freuenzsignal des tp Rechtecks einfügen und bisschen was erklären}
+        	Bei dem Rechteckquellsignal ist ein ähnliches Ergebnis zu sehen, wobei die
+        	Oberseite des Abtastrechtecks des shape-top-samplings bei einem Rechteck
+        	nicht anders aussieht, als bei einem flat-top-sampling. Hier ist das
+        	Zeitsignal:
+        	   	
+        	\begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/shape-top-recht}
+                \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+                eines Rechteckquellsignals}
+      	    \end{figure}
+      	    
+      	    Die Eigenschaften bei erhöhtem Tastverhältnis und der doppelten
+      	    Abtastfrequenz bleiben wie erwartet. Es ist deutlich erkennbar, dass
+      	    die rekonstruierten Signale bei der Abtastfrequenz von $10 kHZ$ nicht
+      	    einen sehr klar sichtbaren Rechteck wiedergeben. Dies ändert sich bei
+      	    einer Abtastfrequenz von $20 kHz$. Dies liegt daran, dass die $10 kHZ$
+      	    nicht der doppelten Bandbreite des Signals entspricht, welche ungefähr
+      	    $8 kHz$ betrug. Dadurch können sich die periodischen Erweiterungen
+      	    im Frequenzbereich überlagern und es entsteht Aliasing, welcher im
+      	    Nachhinein nicht mehr korrigierbar ist. Tasten wir aber mit $20 kHZ$
+      	    ab, ist die Abtastfrequenz mehr als doppelt so groß wie die Bangbreite
+      	    des Signals und Aliasing kann ausgeschlossen werden. Dadurch werden die
+      	    Rekonstruktionen, später auch bei dem Tiefpassgefiltertem
+      	    Rechtecksignal, deutlich erkennbarer und unverzerrter als die
+      	    Rekonstruktionen der mit $10 kHZ$ abgetasteten Signalen.\\
+      	    
+      	    Nun wird auch ein Frequenzgang dieses Rechtecksignals erstellt:
+        	
+        	
+        	\begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/shape-top-zeit_3V}
+                \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+                eines Rechteckquellsignals}
+      	    \end{figure}
+      	    
+        \TODO{hier das Frequenzsignal des Rechtcks einfügen}
+        
+        
+        	Zuletzt werden die Zeit- und die Frequenzbereiche des tiefpassgefilterten
+        	Rechtecks betrachtet. Zuerst der Zeitbereich:
+        	
+        	\begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/shape-top-tp-recht}
+                \caption{Zeitsignal einer shape-top-sampling mit Rekonstruktion
+                eines tiefpassgefilterten Rechteckquellsignals}
+      	    \end{figure}
+        	 
+        	Das tiefpassgefilterte Rechtecksignal verläuft rundlich, man kann ein
+        	urspüngliches Rechteck kaum wieder erkennen. Dennoch passt sich die obere Seite des
+        	Abtastrechtecks der Form des Quellsignals an. Wieder bleiben die erwarteten
+        	Eigenschaften bei verändertem $\alpha$ und veränderter Abtastfrequenz
+        	erhalten und die Rekonstruktionen sind bei einer Abtastung mit $20 kHZ$ aus
+        	dem bereits erwähntem Grund viel deutlicher als gefiltertes Rechteck zu
+        	erkennen.\\ 
+        	
+        	Im Zeitbereich sieht die Abtastung folgendermaßen aus:
+        	
+        	\begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 1.5cm 6cm 1cm 8cm,
+            clip]{./Bilder/shape-top-zeit_3V}
+                \caption{Frequenzsignal einer shape-top-sampling mit Rekonstruktion
+                eines tiefpassgefilterten Rechteckquellsignals}
+      	    \end{figure}
+        	
+        \TODO{Freuenzsignal des tp Rechtecks einfügen und bisschen was erklären}
+        
+        \end{quote}  % Ende Subsection   shape Top  
+        
+        \subsection{Flat-Top Sampling}
+        \begin{quote}
+            \TODO{Noch das komplette Flat Top Sampling einfügen} \\
+        \end{quote}  % Ende Subsection   flat Top    	
+       	
+       	\subsection{Sprachsignal}
+        \begin{quote}
+            Nun werden die Ergebnisse der Sprachübertragung ausgewertet. Zuerst kann
+            man die Plots für die aufgenommenen Sprachsignale und ihre Abtastungen
+            sehen:
+            
+            \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 3.5cm 9cm 4cm 9cm,
+            clip]{./Bilder/sprache_flat-top}
+                \caption{Sprachsignal und die jeweilige flat-top Abtastung}
+            \end{figure}
+            
+            Man kann sehen, dass die flat-top Abtastung auf jeden beliebige Signal
+            anwendbar ist. Wie erwartet, nehmen die abtastenden Rechtecke als
+            jeweilige Amplitude den Amplitudenwert des Sprachsignals an der
+            zeitlichen Position der Abtastung an und behalten diese für die gesamte
+            Abtastperiode.\\
+            Auch für die shape-top Abtastung ist das Quellsignal nicht relevant:
+            
+            \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 3.5cm 9cm 4cm 9cm,
+            clip]{./Bilder/sprache_shape-top}
+                \caption{Sprachsignal und die jeweilige shape-top Abtastung}
+            \end{figure}
+            
+            Die Abtastrechtecke nehmen an der Stelle der Abtastung die Amplitude des
+            Quellsignals an und verlaufen auch weiterhin, wie beim shape-top
+            sampling zu erwarten, über die gesamte Abtastperiode mit der
+            Quellsignalamplitude. Beide Abtastsignale bestätigen unsere
+            Erwartungen.\\
+            
+            Zusätzlich wurde ein weiteres beliebiges Sprachsignal aufgezeichnet,
+            welches zuerst mit dem flat-top Verfahren abgetastet und später anhand
+            eines auf dem Steckbrett vorhandenen Tiefpasses rekonstruiert wurde. Das
+            aufgenommene Sprachsignal und die dazugehörige Rekonstruktion ist hier
+            zu sehen:
+            
+            \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6, trim = 3.5cm 9cm 4cm 9cm,
+            clip]{./Bilder/sprache+rekon}
+                \caption{Sprachsignal und die jeweilige Rekonstruktion}
+            \end{figure}
+            
+        \end{quote}  % Ende Subsection Sprachaufzeichnung
        	
        	
-       	Nun werden die Ergebnisse der Sprachübertragung ausgewertet. Zuerst kann
-       	man die Plots für die aufgenommenen Sprachsignale und ihre Abtastungen
-       	sehen:
-       	
-       	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/sprache_flat-top}
-            \caption{Sprachsignal und die jeweilige flat-top Abtastung}
-  	    \end{figure}
-       	
-       	Man kann sehen, dass die flat-top Abtastung auf jeden beliebige Signal
-       	anwendbar ist. Wie erwartet, nehmen die abtastenden Rechtecke als
-       	jeweilige Amplitude den Amplitudenwert des Sprachsignals an der
-       	zeitlichen Position der Abtastung an und behalten diese für die gesamte
-       	Abtastperiode.\\
-       	Auch für die shape-top Abtastung ist das Quellsignal nicht relevant:
-       	
-       	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/sprache_shape-top}
-            \caption{Sprachsignal und die jeweilige shape-top Abtastung}
-  	    \end{figure}
-       	
-       	Die Abtastrechtecke nehmen an der Stelle der Abtastung die Amplitude des
-       	Quellsignals an und verlaufen auch weiterhin, wie beim shape-top
-       	sampling zu erwarten, über die gesamte Abtastperiode mit der
-       	Quellsignalamplitude. Beide Abtastsignale bestätigen unsere
-       	Erwartungen.\\
-       	
-       	Zusätzlich wurde ein weiteres beliebiges Sprachsignal aufgezeichnet,
-       	welches zuerst mit dem flat-top Verfahren abgetastet und später anhand
-       	eines auf dem Steckbrett vorhandenen Tiefpasses rekonstruiert wurde. Das
-       	aufgenommene Sprachsignal und die dazugehörige Rekonstruktion ist hier
-       	zu sehen:
-       	
-       	\begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/sprache+rekon}
-            \caption{Sprachsignal und die jeweilige Rekonstruktion}
-  	    \end{figure}
-       	
-       	
-       	
+         	
     \end{quote}%beende Auswertung
     
     \section{Zusammenfassung}
     \begin{quote}
-    	\TODO{Zusammenfassung schreiben}
+	
+    	Die praktische Umsetzung der in diesem Praktikum behandelten
+    	Pulsamplitudenmodulation bestätigte unsere Erwartungen aus der Theorie. Wir
+    	konnten nachvollziehen, wie die beiden Verfahren der Abtastung realisiert
+    	werden, indem wir den Aufbau selbstständig ausarbeiteten. Außerdem konnten wir
+    	auf dem PicoScope direkt sehen, ob die flat-top bzw. shape-top modulierten
+    	Signale im Vergleich zu dem unmodulierten Quellsignal die erwartete Form
+    	annahmen. Im Spektrum machten sich dann auch die Vor- und Nachteile der
+    	jeweiligen Abtastverfahren erkennbar.
+    	
+    	\vspace{0.5em}
+    	
+    	Die Herausforderung in diesem Praktikum bestand hauptsächlich darin, die
+    	Schaltung korrekt zu realisieren und die Quellsignale richtig einzustellen.
+    	Auch bei den rekonstruierten Signalen mussten wir stets wissen, wie der verwendete 
+    	Tiefpass funktioniert und wie jegliche Verstärkungen und Dämpfungen auf dem
+    	Steckbrett eingestellt werden mussten.
+    	
+    	\vspace{0.5em}
+    	
+    	Die Sprachübertragung war unserer Meinung nach die interessanteste Durchführung
+    	im Praktikum, obwohl sich bei dem Aufbau der Schaltung sehr wenig verändert
+    	hat. Es war sehr überzeugend zu sehen, dass ein beliebiges Sprachsignal,
+    	welches mit einem simplen Mikrofon aufgenommen wurde, so effektiv
+    	moduliert und rekonstruiert werden konnte. Wenn man berücksichtigt, dass die
+    	zwei behandelten Pulsamplitudenmodulationen die Vorstufe für ein Time-Division-Multiplexing
+    	Verfahren sind, dann ist dieses Beispiel sehr realitätsbezogen, da es sich
+    	nicht um ein selbsterzeugtes Referenzquellsignal handelt, welches
+    	eingesetzt wird, da es einfach zu untersuchen ist, sondern weil es sich um
+    	menschliche Sprache handelt, dessen übertragung für die moderne Kommunikation  
+    	nicht weg zu denken ist.
+	
+
     \end{quote}%beende Zusammenfassung
          
 
@@ -748,115 +737,3 @@
 
 \end{document}
   	    
-  	    Nun wird wieder die Abtastamplitude erhöht:
-  	    
-  	    
-  	    \begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/flat-top-zeit_3V}
-            \caption{Zeitsignal mit flat-top-sampling und Abtastamplitude 3V}
-  	    \end{figure}
-  	    
-  	    
-  	    \begin{figure}[H]
-    \centering
-        \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm,
-        clip]{./Bilder/flat-top-freq_3V}
-            \caption{Frequenzsignal mit flat-top-sampling und Abtastamplitude
-            3V}
-  	    \end{figure}
-  	    
-  	    
-  	    Die Amplituden im Zeitsignal betragen wieder $6V$ und die Amplituden der
-  	    Basisbänder nehmen die Werte $3V \cdot \alpha$ an. Ansonsten ist das
-  	    Spektrum erneut deutlich verzerrter und alle anderen erwarteten
-  	    Ergebnisse können auch hier wahrgenommen werden.
-  	    
-  	    
-    \TODO{sind die Vorbereitungsaufgaben gut genug, dass wir sie beenden
-    können?} 
-    
-    \end{quote}%subsection beenden
-
-\end{quote}%Theorie beeanden
-    
-    \section{Labordurchführung}
-    \begin{quote}
-         \TODO{Durchführung schreiben}
-   	\end{quote}%beende Labordurchführung
-    	    
-    
-    \section{praktische Umsetzung}
-    \begin{quote}
-    Die praktische Umsetzung des Versuchs ist für beide Abtastverfahren gleich.
-    
-    \TODO{zu Ende bringen}
-    \end{quote}%beende praktische Umsetzung
-    
-    
-    \section{Auswertung}
-    \begin{quote}    
-        \TODO{Auswertung schreiben}
-    \end{quote}%beende Auswertung
-    
-    \section{Zusammenfassung}
-    \begin{quote}
-	
-	Die praktische Umsetzung der in diesem Praktikum behandelten
-	Pulsamplitudenmodulation bestätigte unsere Erwartungen aus der Theorie. Wir
-	konnten nachvollziehen, wie die beiden Verfahren der Abtastung realisiert
-	werden, indem wir den Aufbau selbstständig ausarbeiteten. Außerdem konnten wir
-	auf dem PicoScope direkt sehen, ob die flat-top bzw. shape-top modulierten
-	Signale im Vergleich zu dem unmodulierten Quellsignal die erwartete Form
-	annahmen. Im Spektrum machten sich dann auch die Vor- und Nachteile der
-	jeweiligen Abtastverfahren erkennbar.
-	
-	\vspace{0.5em}
-	
-	Die Herausforderung in diesem Praktikum bestand hauptsächlich darin, die
-	Schaltung korrekt zu realisieren und die Quellsignale richtig einzustellen.
-	Auch bei den rekonstruierten Signalen mussten wir stets wissen, wie der verwendete 
-	Tiefpass funktioniert und wie jegliche Verstärkungen und Dämpfungen auf dem
-	Steckbrett eingestellt werden mussten.
-	
-	\vspace{0.5em}
-	
-	Die Sprachübertragung war unserer Meinung nach die interessanteste Durchführung
-	im Praktikum, obwohl sich bei dem Aufbau der Schaltung sehr wenig verändert
-	hat. Es war sehr überzeugend zu sehen, dass ein beliebiges Sprachsignal,
-	welches mit einem simplen Mikrofon aufgenommen wurde, so effektiv
-	moduliert und rekonstruiert werden konnte. Wenn man berücksichtigt, dass die
-	zwei behandelten Pulsamplitudenmodulationen die Vorstufe für ein Time-Division-Multiplexing
-	Verfahren sind, dann ist dieses Beispiel sehr realitätsbezogen, da es sich
-	nicht um ein selbsterzeugtes Referenzquellsignal handelt, welches
-	eingesetzt wird, da es einfach zu untersuchen ist, sondern weil es sich um
-	menschliche Sprache handelt, dessen übertragung für die moderne Kommunikation  
-	nicht weg zu denken ist.
-	
-    \end{quote}%beende Zusammenfassung
-
-%--------------------------------------------------------------------
-%--------------------------------------------------------------------            
-
-\TODO{Boris: öfter mal ein Überraschungsgeschenk für deine beste Freundin
-besorgen!!}
-
-%--------------------------------------------------------------------
-%--------------------------------------------------------------------    
-
-
-\begin{thebibliography}{999}
-% \bibitem {AMohnetraeger} Prof. Dr.-Ing. Sikora, Thomas; Prof. Dr.-Ing. Noll, Peter: Einführung in die
-% Nachrichtenübertragung, S.207
-
-
-
-
-%Name, Vorname.; evtl. Name2, Vorname2.: Titel des Dokumentes
-%oder Buches, Zeitschrift/Verlag/URL (Auflage, Erscheinungsort, -jahr), ggf. Seitenzahlen
-% \bibitem {PasevalscheTheorem} \url{https://de.wikipedia.org/wiki/Parsevalsches_Theorem}, Zugriff
-% 23.05.2012
-\end{thebibliography}
-
-\end{document}
