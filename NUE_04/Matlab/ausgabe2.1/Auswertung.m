@@ -13,7 +13,7 @@ f = 2000; %Quellsignal mit 2kHz
 
 %% plotten des Zeitsignals
 % PAM moduliert
-Zeitplot(a,b,c,d,e,g, 'Sinus', 'Shape_Top', 'A',1)
+%Zeitplot2(a,b,c,d,e,g, 'Sinus', 'Shape_Top', 'A',1)
 
 % PAM demoduliert
 % Zeitplot2(a,b,c,d,e,g, 'Sinus', 'Shape_Top', 'B',2)
