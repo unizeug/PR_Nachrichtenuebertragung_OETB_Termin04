@@ -142,4 +142,4 @@ subplot(2,3,6);
     xlabel('f/Hz');
     ylabel('A(f)[dB]');
     
-    SUPTITLE(['\bf '  Form   '-Top-Sampling mit Rekonstruktion bei '  Signal   'Quellsignal',10]);
+    SUPTITLE(['\bf '  Form   '-Top-Sampling bei '  Signal   'Quellsignal',10]);
